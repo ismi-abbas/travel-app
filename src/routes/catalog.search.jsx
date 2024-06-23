@@ -13,10 +13,7 @@ export const catalogSearchQueryOptions = (place) =>
   queryOptions({
     queryKey: ["search-place", place],
     queryFn: async () => {
-      const { data, error } = await supabase
-        .from("places")
-        .select("*")
-        .ilike("name", `%${place}%`);
+      const { data, error } = await supabase.from("places").select("*").ilike("name", `%${place}%`);
 
       if (error) return error;
       console.log(data);
@@ -74,19 +71,13 @@ function SearchResult() {
                 >
                   <div className="h-[150px] md:h-[230px] overflow-hidden">
                     <img
-                      src={
-                        place.image !== ""
-                          ? place.image
-                          : "https://via.placeholder.com/400x200?text=No+Image"
-                      }
+                      src={place.image !== "" ? place.image : "https://via.placeholder.com/400x200?text=No+Image"}
                       alt={place.name}
                       className="w-full h-full object-cover"
                     />
                   </div>
                   <div className="p-4 flex flex-col justify-end">
-                    <h3 className="text-xl font-semibold mb-2 w-full truncate">
-                      {place.name}
-                    </h3>
+                    <h3 className="text-xl font-semibold mb-2 w-full truncate">{place.name}</h3>
                     {/* Details */}
                     <div className="flex justify-between mb-2 flex-1 flex-col">
                       <p className="flex items-center space-x-2 text-yellow-500">

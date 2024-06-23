@@ -22,11 +22,7 @@ function Profile() {
         <div className="max-w-screen-sm w-full mt-10">
           {data && (
             <div className="border rounded-md bg-white p-14 w-full justify-center flex flex-col items-center gap-4">
-              <img
-                src={avatar_url}
-                alt="profile picture"
-                className="object-cover rounded-full w-36"
-              />
+              <img src={avatar_url} alt="profile picture" className="object-cover rounded-full w-36" />
               <p className="text-xl">{full_name}</p>
               <p>{email}</p>
               <p className="capitalize">{data.role.role}</p>
@@ -49,11 +45,7 @@ async function getUser() {
     throw new Error(error.message);
   }
 
-  const { data: role, error: profileError } = await supabase
-    .from("role")
-    .select()
-    .eq("user_id", data.user.id)
-    .single();
+  const { data: role, error: profileError } = await supabase.from("role").select().eq("user_id", data.user.id).single();
 
   if (profileError) {
     throw new Error(profileError.message);

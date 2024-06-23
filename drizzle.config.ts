@@ -6,5 +6,5 @@ export default defineConfig({
     url: process.env.DATABASE_URL,
   },
   schema: "./schema.ts",
-  out: "./drizzle"
+  out: "./drizzle",
 });

@@ -4,9 +4,7 @@ import supabase from "../../lib/supabase";
 import { AiFillStar } from "react-icons/ai";
 import { IoLocationOutline } from "react-icons/io5";
 
-export const Route = createFileRoute(
-  "/_authenticated/planner/result",
-)({
+export const Route = createFileRoute("/_authenticated/planner/result")({
   component: RecommenderResult,
 });
 
@@ -48,10 +46,7 @@ function RecommenderResult() {
         <p>
           Here are some places that we recommend based on your preferences.
           <span>
-            <Link
-              to="/planner"
-              className="underline underline-offset-1 ml-2 decoration-orange-500 text-orange-500"
-            >
+            <Link to="/planner" className="underline underline-offset-1 ml-2 decoration-orange-500 text-orange-500">
               Back
             </Link>
           </span>
@@ -68,19 +63,13 @@ function RecommenderResult() {
             >
               <div className="h-[150px] md:h-[230px] overflow-hidden">
                 <img
-                  src={
-                    place.image !== ""
-                      ? place.image
-                      : "https://via.placeholder.com/400x200?text=No+Image"
-                  }
+                  src={place.image !== "" ? place.image : "https://via.placeholder.com/400x200?text=No+Image"}
                   alt={place.name}
                   className="w-full h-full object-cover"
                 />
               </div>
               <div className="p-4 flex flex-col justify-end">
-                <h3 className="text-xl font-semibold mb-2 w-full truncate">
-                  {place.name}
-                </h3>
+                <h3 className="text-xl font-semibold mb-2 w-full truncate">{place.name}</h3>
                 {/* Details */}
                 <div className="flex justify-between mb-2 flex-1 flex-col">
                   <p className="flex items-center space-x-2 text-yellow-500">

@@ -5,7 +5,7 @@ export function DataTable({ columns, data }) {
   const table = useReactTable({
     data,
     columns,
-    getCoreRowModel: getCoreRowModel()
+    getCoreRowModel: getCoreRowModel(),
   });
 
   return (
@@ -16,12 +16,7 @@ export function DataTable({ columns, data }) {
             {headerGroup.headers.map((header) => {
               return (
                 <TableHead key={header.id}>
-                  {header.isPlaceholder
-                    ? null
-                    : flexRender(
-                      header.column.columnDef.header,
-                      header.getContext()
-                    )}
+                  {header.isPlaceholder ? null : flexRender(header.column.columnDef.header, header.getContext())}
                 </TableHead>
               );
             })}
@@ -31,11 +26,7 @@ export function DataTable({ columns, data }) {
       <TableBody>
         {table.getRowModel().rows?.length ? (
           table.getRowModel().rows.map((row) => (
-            <TableRow
-              key={row.id}
-              data-state={row.getIsSelected() && "selected"}
-              className=""
-            >
+            <TableRow key={row.id} data-state={row.getIsSelected() && "selected"} className="">
               {row.getVisibleCells().map((cell) => (
                 <TableCell key={cell.id} className="truncate">
                   {flexRender(cell.column.columnDef.cell, cell.getContext())}

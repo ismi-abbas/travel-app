@@ -111,11 +111,8 @@ export default function PlanTour() {
   });
 
   useEffect(() => {
-    const stateCriteria = criterias.find(
-      (criteria) => criteria.value === "state",
-    );
-    const districtOptions =
-      states.find((state) => state.value === selectedState)?.district || [];
+    const stateCriteria = criterias.find((criteria) => criteria.value === "state");
+    const districtOptions = states.find((state) => state.value === selectedState)?.district || [];
     const districtCriteria = {
       name: "District",
       value: "district",
@@ -125,10 +122,7 @@ export default function PlanTour() {
     const newCriteriaList = [
       stateCriteria,
       districtCriteria,
-      ...criterias.filter(
-        (criteria) =>
-          criteria.value !== "state" && criteria.value !== "district",
-      ),
+      ...criterias.filter((criteria) => criteria.value !== "state" && criteria.value !== "district"),
     ];
 
     setCriteriaList(newCriteriaList);
@@ -199,9 +193,7 @@ export default function PlanTour() {
 function CriteriaField({ name, value, options, handleCriteriaChange }) {
   return (
     <div className="relative">
-      <label className="capitalize inline-flex self-start w-full text-lg font-medium">
-        {name}
-      </label>
+      <label className="capitalize inline-flex self-start w-full text-lg font-medium">{name}</label>
       <select
         className="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-orange-500 focus:border-orange-500 mt-2 capitalize text-lg"
         name={name}
