@@ -4,10 +4,10 @@ import { AiFillStar } from "react-icons/ai";
 import { IoLocationOutline } from "react-icons/io5";
 import { queryOptions, useQuery } from "@tanstack/react-query";
 import supabase from "../lib/supabase.js";
-import { states } from "./_authenticated/planner.index.jsx";
 import LocationDropdown from "../components/locationDropdown.jsx";
 import { cn } from "../lib/utils.js";
 import { useState } from "react";
+import { states } from "./_authenticated/planner.jsx";
 
 export const catalogQueryOptions = (category) =>
   queryOptions({

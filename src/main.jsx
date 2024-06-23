@@ -11,7 +11,7 @@ import "./index.css";
  *
  * https://tanstack.com/query/latest/docs/framework/react/quick-start
  */
-const queryClient = new QueryClient();
+export const queryClient = new QueryClient();
 
 import { routeTree } from "./routeTree.gen";
 import { NotFound } from "./components/notFound";

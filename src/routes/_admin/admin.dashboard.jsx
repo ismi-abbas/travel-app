@@ -1,21 +1,36 @@
 import { useQuery } from "@tanstack/react-query";
 import { createFileRoute } from "@tanstack/react-router";
-import { catalogQueryOptions } from "../catalog.index";
 import { DataTable } from "../../components/data-table/dataTable.jsx";
 import { columns } from "../../components/data-table/columns.jsx";
+import supabase from "../../lib/supabase";
 
 export const Route = createFileRoute("/_admin/admin/dashboard")({
-  component: AdminDashboard,
+  component: AdminDashboard
 });
 
 function AdminDashboard() {
-  const { data, isError, isLoading } = useQuery(catalogQueryOptions());
+  const { data, isError, isLoading } = useQuery({
+    queryKey: ["get-admin-places"],
+    queryFn: async (page = 0) => {
+      try {
+        const { data, error } = await supabase.from("places").select().order("name", { ascending: true });
+
+        if (error) {
+          throw new Error(error);
+        }
+        return data;
+      } catch (error) {
+        throw new Error(error);
+      }
+    },
+    gcTime: 1000 * 60 * 5
+  });
 
   return (
-    <div className="w-full">
+    <div className="w-full mt-4">
       {isLoading && <p>Loading...</p>}
       {isError && <p>Something went wrong</p>}
-      {data && <DataTable columns={columns} data={data} />}
+      {data && <DataTable columns={columns} defaultData={data} />}
     </div>
   );
 }

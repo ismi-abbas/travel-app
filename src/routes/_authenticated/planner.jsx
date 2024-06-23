@@ -1,7 +1,7 @@
-import { createFileRoute, Link, useNavigate } from "@tanstack/react-router";
+import { createFileRoute, Link, Outlet, useNavigate } from "@tanstack/react-router";
 import { useEffect, useState } from "react";
 
-export const Route = createFileRoute("/_authenticated/planner/")({
+export const Route = createFileRoute("/_authenticated/planner")({
   component: PlanTour,
 });
 
@@ -99,7 +99,6 @@ const criterias = [
 ];
 
 export default function PlanTour() {
-  const navigate = useNavigate();
   const [criteriaList, setCriteriaList] = useState(criterias);
   const [selectedState, setSelectedState] = useState("kelantan");
   const [selectedCriteria, setSelectedCriteria] = useState({
@@ -148,16 +147,15 @@ export default function PlanTour() {
   }, [selectedCriteria]);
 
   return (
-    <>
+    <div className="">
       <div className="h-20 flex flex-col mt-10">
         <h1 className="inline-flex text-3xl font-medium">Plan your tour</h1>
-
-        <h3 className="inline-flex text-lg">Select the criteria</h3>
       </div>
 
-      <div className="flex-1">
-        <form action="">
-          <div className="mt-6 grid grid-cols-3 gap-6 sm:grid-cols-2 lg:grid-cols-3">
+      <div className="grid grid-cols-4  gap-8">
+        <div className="h-full">
+          <h3 className="text-xl font-semibold">Criterias</h3>
+          <div className="flex gap-3 flex-col mt-4">
             {criteriaList.map((criteria, index) => (
               <CriteriaField
                 key={index}
@@ -168,25 +166,27 @@ export default function PlanTour() {
               />
             ))}
           </div>
-        </form>
+          <div className="flex w-full flex-col mt-4">
+            <Link
+              to="/planner/result"
+              search={{
+                state: selectedCriteria.state,
+                district: selectedCriteria.district,
+                rating: selectedCriteria.rating,
+                distance: selectedCriteria.distance,
+                priceRange: selectedCriteria.priceRange,
+              }}
+              className="inline-flex self-start px-5 py-2 rounded bg-gray-100 hover:bg-orange-500 hover:text-white"
+            >
+              Recommmended Tour
+            </Link>
+          </div>
+        </div>
+        <div className="col-span-3">
+          <Outlet />
+        </div>
       </div>
-
-      <div className="flex w-full flex-col mt-4">
-        <Link
-          to="/planner/result"
-          search={{
-            state: selectedCriteria.state,
-            district: selectedCriteria.district,
-            rating: selectedCriteria.rating,
-            distance: selectedCriteria.distance,
-            priceRange: selectedCriteria.priceRange,
-          }}
-          className="inline-flex self-end px-5 py-2 rounded bg-gray-100 hover:bg-orange-500 hover:text-white"
-        >
-          Recommmended Tour
-        </Link>
-      </div>
-    </>
+    </div>
   );
 }
 
@@ -205,6 +205,89 @@ function CriteriaField({ name, value, options, handleCriteriaChange }) {
           </option>
         ))}
       </select>
+    </div>
+  );
+}
+
+function RecommenderResult() {
+  const criteria = Route.useSearch();
+
+  let rating = [];
+  if (criteria.rating === "low") {
+    rating = [0.0, 2.9];
+  } else if (criteria.rating === "high") {
+    rating = [3.0, 3.9];
+  } else {
+    rating = [4.0, 5];
+  }
+
+  const { data, error } = useQuery({
+    queryKey: ["places"],
+    queryFn: async () => {
+      const { data, error } = await supabase
+        .from("places")
+        .select()
+        .ilike("state", criteria.state)
+        .ilike("city", criteria.district);
+      // .ilike("rating", rating);
+
+      if (error) {
+        throw error;
+      }
+
+      return data;
+    },
+  });
+
+  return (
+    <div className="mt-4">
+      <div className="flex flex-col justify-center items-center h-full">
+        <h1 className="text-2xl">Recommended Trips</h1>
+
+        <p>
+          Here are some places that we recommend based on your preferences.
+          <span>
+            <Link to="/planner" className="underline underline-offset-1 ml-2 decoration-orange-500 text-orange-500">
+              Back
+            </Link>
+          </span>
+        </p>
+      </div>
+      <div className="grid grid-cols-4 gap-4 mt-4">
+        {data &&
+          data.map((place) => (
+            <Link
+              to="/catalog/$placeId"
+              params={{ placeId: place.id }}
+              key={place.id}
+              className="place w-full bg-white border rounded-lg overflow-hidden hover:cursor-pointer hover:ring-2 hover:ring-orange-600"
+            >
+              <div className="h-[150px] md:h-[230px] overflow-hidden">
+                <img
+                  src={place.image !== "" ? place.image : "https://via.placeholder.com/400x200?text=No+Image"}
+                  alt={place.name}
+                  className="w-full h-full object-cover"
+                />
+              </div>
+              <div className="p-4 flex flex-col justify-end">
+                <h3 className="text-xl font-semibold mb-2 w-full truncate">{place.name}</h3>
+                {/* Details */}
+                <div className="flex justify-between mb-2 flex-1 flex-col">
+                  <p className="flex items-center space-x-2 text-yellow-500">
+                    <AiFillStar />
+                    <span>{place.rating}</span>
+                  </p>
+                  <div className="flex items-center">
+                    <div className="mr-2">
+                      <IoLocationOutline />
+                    </div>
+                    <p className="text-start truncate">{place.address}</p>
+                  </div>
+                </div>
+              </div>
+            </Link>
+          ))}
+      </div>
     </div>
   );
 }

@@ -47,7 +47,7 @@ function RecommenderResult() {
           Here are some places that we recommend based on your preferences.
           <span>
             <Link to="/planner" className="underline underline-offset-1 ml-2 decoration-orange-500 text-orange-500">
-              Back
+              Clear
             </Link>
           </span>
         </p>

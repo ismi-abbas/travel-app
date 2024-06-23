@@ -23,7 +23,7 @@ import { Route as SignInAdminImport } from './routes/sign-in.admin'
 import { Route as CatalogSearchImport } from './routes/catalog.search'
 import { Route as CatalogPlaceIdImport } from './routes/catalog.$placeId'
 import { Route as AuthenticatedProfileImport } from './routes/_authenticated/profile'
-import { Route as AuthenticatedPlannerIndexImport } from './routes/_authenticated/planner.index'
+import { Route as AuthenticatedPlannerImport } from './routes/_authenticated/planner'
 import { Route as AuthenticatedPlannerResultImport } from './routes/_authenticated/planner.result'
 import { Route as AdminAdminDashboardImport } from './routes/_admin/admin.dashboard'
 
@@ -32,191 +32,79 @@ import { Route as AdminAdminDashboardImport } from './routes/_admin/admin.dashbo
 const SignUpRoute = SignUpImport.update({
   path: '/sign-up',
   getParentRoute: () => rootRoute,
-} as any)
+})
 
 const SignInRoute = SignInImport.update({
   path: '/sign-in',
   getParentRoute: () => rootRoute,
-} as any)
+})
 
 const ContactRoute = ContactImport.update({
   path: '/contact',
   getParentRoute: () => rootRoute,
-} as any)
+})
 
 const AboutRoute = AboutImport.update({
   path: '/about',
   getParentRoute: () => rootRoute,
-} as any)
+})
 
 const AuthenticatedRoute = AuthenticatedImport.update({
   id: '/_authenticated',
   getParentRoute: () => rootRoute,
-} as any)
+})
 
 const AdminRoute = AdminImport.update({
   id: '/_admin',
   getParentRoute: () => rootRoute,
-} as any)
+})
 
 const IndexRoute = IndexImport.update({
   path: '/',
   getParentRoute: () => rootRoute,
-} as any)
+})
 
 const CatalogIndexRoute = CatalogIndexImport.update({
   path: '/catalog/',
   getParentRoute: () => rootRoute,
-} as any)
+})
 
 const SignInAdminRoute = SignInAdminImport.update({
   path: '/admin',
   getParentRoute: () => SignInRoute,
-} as any)
+})
 
 const CatalogSearchRoute = CatalogSearchImport.update({
   path: '/catalog/search',
   getParentRoute: () => rootRoute,
-} as any)
+})
 
 const CatalogPlaceIdRoute = CatalogPlaceIdImport.update({
   path: '/catalog/$placeId',
   getParentRoute: () => rootRoute,
-} as any)
+})
 
 const AuthenticatedProfileRoute = AuthenticatedProfileImport.update({
   path: '/profile',
   getParentRoute: () => AuthenticatedRoute,
-} as any)
+})
 
-const AuthenticatedPlannerIndexRoute = AuthenticatedPlannerIndexImport.update({
-  path: '/planner/',
+const AuthenticatedPlannerRoute = AuthenticatedPlannerImport.update({
+  path: '/planner',
   getParentRoute: () => AuthenticatedRoute,
-} as any)
+})
 
 const AuthenticatedPlannerResultRoute = AuthenticatedPlannerResultImport.update(
   {
-    path: '/planner/result',
-    getParentRoute: () => AuthenticatedRoute,
-  } as any,
+    path: '/result',
+    getParentRoute: () => AuthenticatedPlannerRoute,
+  },
 )
 
 const AdminAdminDashboardRoute = AdminAdminDashboardImport.update({
   path: '/admin/dashboard',
   getParentRoute: () => AdminRoute,
-} as any)
-
-// Populate the FileRoutesByPath interface
-
-declare module '@tanstack/react-router' {
-  interface FileRoutesByPath {
-    '/': {
-      id: '/'
-      path: '/'
-      fullPath: '/'
-      preLoaderRoute: typeof IndexImport
-      parentRoute: typeof rootRoute
-    }
-    '/_admin': {
-      id: '/_admin'
-      path: ''
-      fullPath: ''
-      preLoaderRoute: typeof AdminImport
-      parentRoute: typeof rootRoute
-    }
-    '/_authenticated': {
-      id: '/_authenticated'
-      path: ''
-      fullPath: ''
-      preLoaderRoute: typeof AuthenticatedImport
-      parentRoute: typeof rootRoute
-    }
-    '/about': {
-      id: '/about'
-      path: '/about'
-      fullPath: '/about'
-      preLoaderRoute: typeof AboutImport
-      parentRoute: typeof rootRoute
-    }
-    '/contact': {
-      id: '/contact'
-      path: '/contact'
-      fullPath: '/contact'
-      preLoaderRoute: typeof ContactImport
-      parentRoute: typeof rootRoute
-    }
-    '/sign-in': {
-      id: '/sign-in'
-      path: '/sign-in'
-      fullPath: '/sign-in'
-      preLoaderRoute: typeof SignInImport
-      parentRoute: typeof rootRoute
-    }
-    '/sign-up': {
-      id: '/sign-up'
-      path: '/sign-up'
-      fullPath: '/sign-up'
-      preLoaderRoute: typeof SignUpImport
-      parentRoute: typeof rootRoute
-    }
-    '/_authenticated/profile': {
-      id: '/_authenticated/profile'
-      path: '/profile'
-      fullPath: '/profile'
-      preLoaderRoute: typeof AuthenticatedProfileImport
-      parentRoute: typeof AuthenticatedImport
-    }
-    '/catalog/$placeId': {
-      id: '/catalog/$placeId'
-      path: '/catalog/$placeId'
-      fullPath: '/catalog/$placeId'
-      preLoaderRoute: typeof CatalogPlaceIdImport
-      parentRoute: typeof rootRoute
-    }
-    '/catalog/search': {
-      id: '/catalog/search'
-      path: '/catalog/search'
-      fullPath: '/catalog/search'
-      preLoaderRoute: typeof CatalogSearchImport
-      parentRoute: typeof rootRoute
-    }
-    '/sign-in/admin': {
-      id: '/sign-in/admin'
-      path: '/admin'
-      fullPath: '/sign-in/admin'
-      preLoaderRoute: typeof SignInAdminImport
-      parentRoute: typeof SignInImport
-    }
-    '/catalog/': {
-      id: '/catalog/'
-      path: '/catalog'
-      fullPath: '/catalog'
-      preLoaderRoute: typeof CatalogIndexImport
-      parentRoute: typeof rootRoute
-    }
-    '/_admin/admin/dashboard': {
-      id: '/_admin/admin/dashboard'
-      path: '/admin/dashboard'
-      fullPath: '/admin/dashboard'
-      preLoaderRoute: typeof AdminAdminDashboardImport
-      parentRoute: typeof AdminImport
-    }
-    '/_authenticated/planner/result': {
-      id: '/_authenticated/planner/result'
-      path: '/planner/result'
-      fullPath: '/planner/result'
-      preLoaderRoute: typeof AuthenticatedPlannerResultImport
-      parentRoute: typeof AuthenticatedImport
-    }
-    '/_authenticated/planner/': {
-      id: '/_authenticated/planner/'
-      path: '/planner'
-      fullPath: '/planner'
-      preLoaderRoute: typeof AuthenticatedPlannerIndexImport
-      parentRoute: typeof AuthenticatedImport
-    }
-  }
-}
+})
 
 // Create and export the route tree
 
@@ -224,9 +112,10 @@ export const routeTree = rootRoute.addChildren({
   IndexRoute,
   AdminRoute: AdminRoute.addChildren({ AdminAdminDashboardRoute }),
   AuthenticatedRoute: AuthenticatedRoute.addChildren({
+    AuthenticatedPlannerRoute: AuthenticatedPlannerRoute.addChildren({
+      AuthenticatedPlannerResultRoute,
+    }),
     AuthenticatedProfileRoute,
-    AuthenticatedPlannerResultRoute,
-    AuthenticatedPlannerIndexRoute,
   }),
   AboutRoute,
   ContactRoute,
@@ -269,9 +158,8 @@ export const routeTree = rootRoute.addChildren({
     "/_authenticated": {
       "filePath": "_authenticated.jsx",
       "children": [
-        "/_authenticated/profile",
-        "/_authenticated/planner/result",
-        "/_authenticated/planner/"
+        "/_authenticated/planner",
+        "/_authenticated/profile"
       ]
     },
     "/about": {
@@ -288,6 +176,13 @@ export const routeTree = rootRoute.addChildren({
     },
     "/sign-up": {
       "filePath": "sign-up.jsx"
+    },
+    "/_authenticated/planner": {
+      "filePath": "_authenticated/planner.jsx",
+      "parent": "/_authenticated",
+      "children": [
+        "/_authenticated/planner/result"
+      ]
     },
     "/_authenticated/profile": {
       "filePath": "_authenticated/profile.jsx",
@@ -312,11 +207,7 @@ export const routeTree = rootRoute.addChildren({
     },
     "/_authenticated/planner/result": {
       "filePath": "_authenticated/planner.result.jsx",
-      "parent": "/_authenticated"
-    },
-    "/_authenticated/planner/": {
-      "filePath": "_authenticated/planner.index.jsx",
-      "parent": "/_authenticated"
+      "parent": "/_authenticated/planner"
     }
   }
 }
