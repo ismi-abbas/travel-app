@@ -1,9 +1,27 @@
 import { createFileRoute, Link, Outlet, useNavigate } from "@tanstack/react-router";
 import { useEffect, useState } from "react";
+import { cn } from "../../lib/utils";
+import supabase from "../../lib/supabase";
+import { useQuery } from "@tanstack/react-query";
+import { Slider } from "../../components/slider";
 
 export const Route = createFileRoute("/_authenticated/planner")({
   component: PlanTour,
 });
+
+const getAllCategories = async () => {
+  const { data, error } = await supabase.from("places").select("subcategory").neq("subcategory", "{}");
+  if (error) {
+    console.error(error);
+    return [];
+  }
+  const flatCategories = data
+    .map((item) => item.subcategory) // Extract subcategory arrays
+    .flat() // Flatten into a single array
+    .filter((value, index, self) => self.indexOf(value) === index); // Filter unique values
+
+  return flatCategories;
+};
 
 export const states = [
   {
@@ -74,18 +92,16 @@ const criterias = [
     name: "Rating",
     value: "rating",
     options: [
-      { name: "High Rated", value: "high" },
-      { name: "Medium Rated", value: "middle" },
-      { name: "Low Rated", value: "low" },
+      { name: "1", value: "5" },
+      { name: "2", value: "4" },
+      { name: "3", value: "3" },
+      { name: "4", value: "3" },
+      { name: "5", value: "3" },
     ],
   },
   {
     name: "Distance",
-    value: "distance",
-    options: [
-      { name: "Close", value: "close" },
-      { name: "Far", value: "far" },
-    ],
+    value: 0,
   },
   {
     name: "Price Range",
@@ -95,6 +111,11 @@ const criterias = [
       { name: "Affordable", value: "affordable" },
       { name: "Pricey", value: "pricey" },
     ],
+  },
+  {
+    name: "Category",
+    value: "category",
+    options: [],
   },
 ];
 
@@ -107,6 +128,12 @@ export default function PlanTour() {
     rating: criterias[2].options[0].value,
     distance: criterias[3].options[0].value,
     priceRange: criterias[4].options[0].value,
+  });
+
+  const { data: categoriesData, error } = useQuery({
+    queryKey: ["get-categories"],
+    queryFn: getAllCategories,
+    gcTime: 1000 * 60 * 60,
   });
 
   useEffect(() => {
@@ -146,25 +173,145 @@ export default function PlanTour() {
     console.log(selectedCriteria);
   }, [selectedCriteria]);
 
+  const [selectedRating, setSelectedRating] = useState(0);
+  const [hoveredRating, setHoveredRating] = useState(0);
+
+  const handleRatingChange = (rating) => {
+    setSelectedRating(rating);
+    handleCriteriaChange(rating, "rating");
+  };
+
+  const [selectedCategories, setSelectedCategories] = useState([]);
+
+  const handleCategoryChange = (category) => {
+    setSelectedCategories((prev) => {
+      if (prev.includes(category)) {
+        return prev.filter((item) => item !== category);
+      } else {
+        return [...prev, category];
+      }
+    });
+  };
+
+  const handleDistanceChange = (e) => {
+    // handleCriteriaChange(value, "distance");
+    console.log(e.target.value);
+  };
+
   return (
     <div className="">
       <div className="h-20 flex flex-col mt-10">
         <h1 className="inline-flex text-3xl font-medium">Plan your tour</h1>
       </div>
 
-      <div className="grid grid-cols-4  gap-8">
-        <div className="h-full">
+      <div className="flex w-full gap-8 items-start justify-start">
+        {/* Planner Bar */}
+        <div className="w-[25%] border-r-2 pr-10 h-screen">
           <h3 className="text-xl font-semibold">Criterias</h3>
           <div className="flex gap-3 flex-col mt-4">
-            {criteriaList.map((criteria, index) => (
-              <CriteriaField
-                key={index}
-                name={criteria.name}
-                value={criteria.value}
-                options={criteria.options}
-                handleCriteriaChange={handleCriteriaChange}
-              />
-            ))}
+            {/* State */}
+            <div>
+              <label className="capitalize inline-flex self-start w-full text-lg font-medium">State</label>
+              <select
+                className="appearance-none block w-full px-3 py-1 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-orange-500 focus:border-orange-500 mt-2 capitalize text-lg"
+                name="state"
+                onChange={(e) => handleCriteriaChange(e.target.value, value)}
+              >
+                {states.map((state, index) => (
+                  <option className="capitalize" key={index} value={state.value}>
+                    {state.name}
+                  </option>
+                ))}
+              </select>
+            </div>
+            {/* District */}
+            <div>
+              <label className="capitalize inline-flex self-start w-full text-lg font-medium">
+                {criteriaList[1].name}
+              </label>
+              <select
+                className="appearance-none block w-full px-3 py-1 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-orange-500 focus:border-orange-500 mt-2 capitalize text-lg"
+                name="state"
+                onChange={(e) => handleCriteriaChange(e.target.value, value)}
+              >
+                {states.map((state, index) => (
+                  <option className="capitalize" key={index} value={state.value}>
+                    {state.name}
+                  </option>
+                ))}
+              </select>
+            </div>
+            {/* Rating */}
+            <div>
+              <label className="capitalize inline-flex self-start w-full text-lg font-medium">
+                {criteriaList[2].name}
+              </label>
+              <div className="" name="state">
+                <div className="flex">
+                  {Array.from([1, 2, 3, 4, 5]).map((item) => (
+                    <svg
+                      key={item}
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="32"
+                      height="32"
+                      viewBox="0 0 24 24"
+                      className={cn(
+                        "cursor-pointer hover:text-orange-400 text-gray-300",
+                        (selectedRating >= item || hoveredRating >= item) && "text-orange-500",
+                      )}
+                      onMouseEnter={() => setHoveredRating(item)}
+                      onMouseLeave={() => setHoveredRating(0)}
+                      onClick={() => handleRatingChange(item)}
+                    >
+                      <path
+                        fill="currentColor"
+                        d="m7.625 6.4l2.8-3.625q.3-.4.713-.587T12 2t.863.188t.712.587l2.8 3.625l4.25 1.425q.65.2 1.025.738t.375 1.187q0 .3-.088.6t-.287.575l-2.75 3.9l.1 4.1q.025.875-.575 1.475t-1.4.6q-.05 0-.55-.075L12 19.675l-4.475 1.25q-.125.05-.275.063T6.975 21q-.8 0-1.4-.6T5 18.925l.1-4.125l-2.725-3.875q-.2-.275-.288-.575T2 9.75q0-.625.363-1.162t1.012-.763z"
+                      />
+                    </svg>
+                  ))}
+                </div>
+              </div>
+            </div>
+            {/* Distance */}
+            <div>
+              <label className="capitalize inline-flex self-start w-full text-lg font-medium">
+                {criteriaList[3].name}
+              </label>
+              <select>
+                <Slider
+                  defaultValue={[33]}
+                  max={100}
+                  step={1}
+                  value={criteriaList[3].name}
+                  onChange={handleDistanceChange}
+                />
+              </select>
+            </div>
+            {/* Categories */}
+            <div>
+              <label className="capitalize inline-flex self-start w-full text-lg font-medium">
+                {criteriaList[5].name}
+              </label>
+              <div className="mt-2">
+                {categoriesData &&
+                  categoriesData.map((category, index) => (
+                    <div key={index} className="flex items-center justify-start gap-2">
+                      <input
+                        type="checkbox"
+                        id={`category-${index}`}
+                        name={category}
+                        value={category}
+                        className="size-5"
+                        checked={selectedCategories.includes(category)}
+                        onChange={() => handleCategoryChange(category)}
+                      />
+                      <label htmlFor={`category-${index}`} className="capitalize text-lg flex-1">
+                        {category}
+                      </label>
+                    </div>
+                  ))}
+              </div>
+            </div>
           </div>
           <div className="flex w-full flex-col mt-4">
             <Link
@@ -182,7 +329,7 @@ export default function PlanTour() {
             </Link>
           </div>
         </div>
-        <div className="col-span-3">
+        <div className="col-span-3 flex-1">
           <Outlet />
         </div>
       </div>
@@ -192,7 +339,7 @@ export default function PlanTour() {
 
 function CriteriaField({ name, value, options, handleCriteriaChange }) {
   return (
-    <div className="relative">
+    <div className="">
       <label className="capitalize inline-flex self-start w-full text-lg font-medium">{name}</label>
       <select
         className="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-orange-500 focus:border-orange-500 mt-2 capitalize text-lg"
@@ -205,89 +352,6 @@ function CriteriaField({ name, value, options, handleCriteriaChange }) {
           </option>
         ))}
       </select>
-    </div>
-  );
-}
-
-function RecommenderResult() {
-  const criteria = Route.useSearch();
-
-  let rating = [];
-  if (criteria.rating === "low") {
-    rating = [0.0, 2.9];
-  } else if (criteria.rating === "high") {
-    rating = [3.0, 3.9];
-  } else {
-    rating = [4.0, 5];
-  }
-
-  const { data, error } = useQuery({
-    queryKey: ["places"],
-    queryFn: async () => {
-      const { data, error } = await supabase
-        .from("places")
-        .select()
-        .ilike("state", criteria.state)
-        .ilike("city", criteria.district);
-      // .ilike("rating", rating);
-
-      if (error) {
-        throw error;
-      }
-
-      return data;
-    },
-  });
-
-  return (
-    <div className="mt-4">
-      <div className="flex flex-col justify-center items-center h-full">
-        <h1 className="text-2xl">Recommended Trips</h1>
-
-        <p>
-          Here are some places that we recommend based on your preferences.
-          <span>
-            <Link to="/planner" className="underline underline-offset-1 ml-2 decoration-orange-500 text-orange-500">
-              Back
-            </Link>
-          </span>
-        </p>
-      </div>
-      <div className="grid grid-cols-4 gap-4 mt-4">
-        {data &&
-          data.map((place) => (
-            <Link
-              to="/catalog/$placeId"
-              params={{ placeId: place.id }}
-              key={place.id}
-              className="place w-full bg-white border rounded-lg overflow-hidden hover:cursor-pointer hover:ring-2 hover:ring-orange-600"
-            >
-              <div className="h-[150px] md:h-[230px] overflow-hidden">
-                <img
-                  src={place.image !== "" ? place.image : "https://via.placeholder.com/400x200?text=No+Image"}
-                  alt={place.name}
-                  className="w-full h-full object-cover"
-                />
-              </div>
-              <div className="p-4 flex flex-col justify-end">
-                <h3 className="text-xl font-semibold mb-2 w-full truncate">{place.name}</h3>
-                {/* Details */}
-                <div className="flex justify-between mb-2 flex-1 flex-col">
-                  <p className="flex items-center space-x-2 text-yellow-500">
-                    <AiFillStar />
-                    <span>{place.rating}</span>
-                  </p>
-                  <div className="flex items-center">
-                    <div className="mr-2">
-                      <IoLocationOutline />
-                    </div>
-                    <p className="text-start truncate">{place.address}</p>
-                  </div>
-                </div>
-              </div>
-            </Link>
-          ))}
-      </div>
     </div>
   );
 }

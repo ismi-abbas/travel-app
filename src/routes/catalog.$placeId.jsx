@@ -24,7 +24,7 @@ function DetailsComponent() {
   const { data, isError } = useSuspenseQuery(placeDetailsQueryOptions(placeId));
 
   return (
-    <div className="container">
+    <div className="container mb-10">
       <div className="flex flex-col">
         {isError ? (
           <div className="flex flex-1 justify-center">
@@ -34,9 +34,9 @@ function DetailsComponent() {
           data && (
             <div className="flex flex-1 justify-center flex-col px-20 mt-10">
               <div className="flex items-start my-2">
-                <Link className="bg-orange-500 text-white px-6 py-2 rounded-md" to="/">
+                <button className="bg-orange-500 text-white px-6 py-2 rounded-md hover:bg-white hover:ring-orange-500 hover:text-black hover:ring-1" onClick={() => window.history.back()}>
                   Back
-                </Link>
+                </button>
               </div>
               <div className="w-full h-[500px] rounded-lg">
                 <img src={data.image} alt="image" className="w-full h-full object-cover rounded-lg" />

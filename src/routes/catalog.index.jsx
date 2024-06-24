@@ -1,13 +1,11 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { Link } from "@tanstack/react-router";
-import { AiFillStar } from "react-icons/ai";
-import { IoLocationOutline } from "react-icons/io5";
 import { queryOptions, useQuery } from "@tanstack/react-query";
 import supabase from "../lib/supabase.js";
 import LocationDropdown from "../components/locationDropdown.jsx";
 import { cn } from "../lib/utils.js";
 import { useState } from "react";
 import { states } from "./_authenticated/planner.jsx";
+import { PlaceCard } from "../components/placeCard.jsx";
 
 export const catalogQueryOptions = (category) =>
   queryOptions({
@@ -100,37 +98,55 @@ function CatalogPage() {
   const { data, isError } = useQuery(catalogQueryOptions());
   const [filteredData, setFilteredData] = useState(data);
   const [isFiltered, setIsFiltered] = useState(false);
+  const [selectedLocation, setSelectedLocation] = useState(null);
 
-  const filterLocation = (location) => {
+  const filter = (category, location = null) => {
+    setSelectedLocation(location);
     setIsFiltered(true);
-    const filteredData = data.filter((place) => place.city === location);
+
+    let filteredData = data;
+
+    if (selectedLocation) {
+      filteredData = filteredData.filter((place) => place.city === selectedLocation);
+    }
+
+    if (location) {
+      filteredData = filteredData.filter((place) => place.city === location);
+    }
+
+    switch (category) {
+      case "hotel":
+      case "restaurant":
+        filteredData = filteredData.filter((place) => place.type.toLowerCase() === category);
+        break;
+      case "cafe":
+        filteredData = filteredData.filter((place) => place.type.toLowerCase() === "restaurant");
+        break;
+      case "museums":
+        filteredData = filteredData.filter((place) => place.subcategory.includes("Museums"));
+        break;
+      case "ttd":
+        filteredData = filteredData.filter((place) => place.type.toLowerCase() === "attraction");
+        break;
+      case "landmarks":
+        filteredData = filteredData.filter((place) => place.subcategory.includes("Sights & Landmarks"));
+        break;
+      default:
+        break;
+    }
+
     setFilteredData(filteredData);
   };
 
-  const filter = (category) => {
-    setIsFiltered(true);
-    if (category === "hotel" || category === "restaurant") {
-      const filteredData = data.filter((place) => place.type.toLowerCase() === category);
-      setFilteredData(filteredData);
-    } else if (category === "cafe") {
-      const filteredData = data.filter((place) => place.type.toLowerCase() === "restaurant");
-      setFilteredData(filteredData);
-    } else if (category === "museums") {
-      const filteredData = data.filter((place) => place.subcategory.includes("Museums"));
-      setFilteredData(filteredData);
-    } else if (category === "ttd") {
-      const filteredData = data.filter((place) => place.type.toLowerCase() === "attraction");
-      setFilteredData(filteredData);
-    } else if (category === "landmarks") {
-      const filteredData = data.filter((place) => place.subcategory.includes("Sights & Landmarks"));
-      setFilteredData(filteredData);
-    }
+  const resetFilters = () => {
+    setIsFiltered(false);
+    setFilteredData(data);
   };
 
   return (
     <div className="container pb-10">
       <div className="flex justify-start mt-4">
-        <LocationDropdown locationList={states} filterLocation={filterLocation} />
+        <LocationDropdown locationList={states} filterLocation={(location) => filter(null, location)} />
       </div>
       <div className="flex w-full justify-between px-20 py-2 mt-4">
         {categories.map(({ name, value }, index) => (
@@ -142,11 +158,10 @@ function CatalogPage() {
             {name}
           </button>
         ))}
-
         <button
           disabled={!isFiltered}
           className="bg-white px-4 py-2 rounded-md outline outline-1 outline-orange-500 hover:bg-orange-500 hover:text-white"
-          onClick={() => setIsFiltered((current) => !current)}
+          onClick={resetFilters}
         >
           Reset filter
         </button>
@@ -156,105 +171,20 @@ function CatalogPage() {
           <div className="flex flex-1 justify-center">
             <h2 className="text-xl">Server Error</h2>
           </div>
-        ) : isFiltered === true ? (
+        ) : isFiltered ? (
           <div className="grid grid-cols-4 gap-4">
             {filteredData.map((place) => (
-              <Link
-                to="/catalog/$placeId"
-                params={{ placeId: place.id }}
-                key={place.id}
-                className="place w-full bg-white border rounded-lg overflow-hidden hover:cursor-pointer hover:ring-2 hover:ring-orange-600"
-              >
-                <div className="h-[150px] md:h-[230px] overflow-hidden">
-                  <img
-                    src={place.image !== "" ? place.image : "https://via.placeholder.com/400x200?text=No+Image"}
-                    alt={place.name}
-                    className="w-full h-full object-cover"
-                  />
-                </div>
-                <div className="p-4 flex flex-col justify-end">
-                  <h3 className="text-xl font-semibold mb-2 w-full truncate">{place.name}</h3>
-                  {/* Details */}
-                  <div className="flex justify-between mb-2 flex-1 flex-col">
-                    <p className="flex items-center space-x-1 text-yellow-500">
-                      <span className="text-primary">Rating</span>
-                      <div className="flex">
-                        {Array.from({ length: place.rating }).map((_, index) => (
-                          <AiFillStar key={index} />
-                        ))}
-                      </div>
-                      <span>{place.rating}</span>
-                    </p>
-                    <div className="flex items-center">
-                      <div className="mr-2">
-                        <IoLocationOutline />
-                      </div>
-                      <p className="text-start truncate">{place.address}</p>
-                    </div>
-                    <div className="mt-2 flex flex-wrap gap-2">
-                      {place.subcategory.map((category, index) => (
-                        <span key={index} className="bg-gray-200 text-gray-600 px-2 py-1 rounded-lg text-xs">
-                          {category}
-                        </span>
-                      ))}
-                      <p className="text-start truncate"></p>
-                    </div>
-                  </div>
-                </div>
-              </Link>
+              <PlaceCard place={place} key={place.id} />
             ))}
           </div>
         ) : (
           <div className="grid grid-cols-4 gap-4">
-            {data &&
-              data.map((place) => (
-                <Link
-                  to="/catalog/$placeId"
-                  params={{ placeId: place.id }}
-                  key={place.id}
-                  className="place w-full bg-white border rounded-lg overflow-hidden hover:cursor-pointer hover:ring-2 hover:ring-orange-600"
-                >
-                  <div className="h-[150px] md:h-[230px] overflow-hidden">
-                    <img
-                      src={place.image !== "" ? place.image : "https://via.placeholder.com/400x200?text=No+Image"}
-                      alt={place.name}
-                      className="w-full h-full object-cover"
-                    />
-                  </div>
-                  <div className="p-4 flex flex-col justify-end">
-                    <h3 className="text-xl font-semibold mb-2 w-full truncate">{place.name}</h3>
-                    {/* Details */}
-                    <div className="flex justify-between mb-2 flex-1 flex-col">
-                      <p className="flex items-center space-x-1 text-yellow-500">
-                        <span className="text-primary">Rating</span>
-                        <div className="flex">
-                          {Array.from({ length: place.rating }).map((_, index) => (
-                            <AiFillStar key={index} />
-                          ))}
-                        </div>
-                        <span>{place.rating}</span>
-                      </p>
-                      <div className="flex items-center">
-                        <div className="mr-2">
-                          <IoLocationOutline />
-                        </div>
-                        <p className="text-start truncate">{place.address}</p>
-                      </div>
-                      <div className="mt-2 flex flex-wrap gap-2">
-                        {place.subcategory.map((category, index) => (
-                          <span key={index} className="bg-gray-200 text-gray-600 px-2 py-1 rounded-lg text-xs">
-                            {category}
-                          </span>
-                        ))}
-                        <p className="text-start truncate"></p>
-                      </div>
-                    </div>
-                  </div>
-                </Link>
-              ))}
+            {data && data.map((place) => <PlaceCard place={place} key={place.id} />)}
           </div>
         )}
       </div>
     </div>
   );
 }
+
+export default CatalogPage;
