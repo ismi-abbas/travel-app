@@ -4,8 +4,8 @@ import supabase from "../lib/supabase.js";
 import LocationDropdown from "../components/locationDropdown.jsx";
 import { cn } from "../lib/utils.js";
 import { useState } from "react";
-import { states } from "./_authenticated/planner.jsx";
 import { PlaceCard } from "../components/placeCard.jsx";
+import { states } from "../lib/constant.js";
 
 export const catalogQueryOptions = (category) =>
   queryOptions({

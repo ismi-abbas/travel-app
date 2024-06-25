@@ -47,7 +47,7 @@ export const PlaceCard = ({ place }) => (
   </Link>
 );
 
-export const PlaceCardHorizontal = ({ place }) => (
+export const PlaceCardHorizontal = ({ place, selectedDistrict }) => (
   <Link
     to="/catalog/$placeId"
     params={{ placeId: place.id }}
@@ -75,7 +75,14 @@ export const PlaceCardHorizontal = ({ place }) => (
           <div className="mr-2">
             <IoLocationOutline />
           </div>
-          <p className="text-start truncate">{place.address}</p>
+          <div className="text-start truncate">{place.address}</div>
+        </div>
+        <div>
+          Distance from <span className="capitalize">{selectedDistrict}</span>:{" "}
+          <span className="font-medium">{place.distance.toFixed(2)} KM</span>
+        </div>
+        <div>
+          Price range: <span className="font-medium">{place.price_range}</span>
         </div>
         <div className="mt-2 flex flex-wrap gap-2">
           {place.subcategory.map((category, index) => (

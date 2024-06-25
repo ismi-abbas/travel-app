@@ -28,3 +28,24 @@ export const calculateDistance = (lat1, lon1, lat2, lon2) => {
 
   return R * c; // Distance in kilometers
 };
+
+/**
+ * Extracts the low and high price range from a given price range string.
+ *
+ * @param {string} priceRangeString - The price range string to extract the prices from.
+ * @returns {Object|null} An object containing the low and high prices, or null if the price range string format is incorrect.
+ */
+export const extractPriceRange = (priceRangeString, placeId) => {
+  const cleanedString = priceRangeString.replace(/,/g, ""); // Remove commas
+  const prices = cleanedString.match(/\d+/g).map((num) => parseInt(num, 10));
+
+  if (prices.length === 1) {
+    const [price] = prices;
+    return { low: price, high: price };
+  } else if (prices.length >= 2) {
+    const [low, high] = prices.sort((a, b) => a - b);
+    return { low, high };
+  } else {
+    return { low: 0, high: 0 };
+  }
+};

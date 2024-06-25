@@ -1,11 +1,12 @@
-import { createFileRoute, Link, Outlet, useNavigate } from "@tanstack/react-router";
+import { createFileRoute, Link, Outlet } from "@tanstack/react-router";
 import { useEffect, useState } from "react";
 import { cn } from "../../lib/utils";
 import supabase from "../../lib/supabase";
 import { useQuery } from "@tanstack/react-query";
 import { Slider } from "../../components/slider";
 import { Star } from "../../components/icons";
-import { criterias } from "../../lib/constant";
+import { criterias, districtsCoordinates, states } from "../../lib/constant";
+import toast from "react-hot-toast";
 
 export const Route = createFileRoute("/_authenticated/planner")({
   component: PlanTour,
@@ -17,15 +18,47 @@ const getAllCategories = async () => {
     console.error(error);
     return [];
   }
-  const flatCategories = data
+  // Filter unique values
+  return data
     .map((item) => item.subcategory) // Extract subcategory arrays
     .flat() // Flatten into a single array
-    .filter((value, index, self) => self.indexOf(value) === index); // Filter unique values
+    .filter((value, index, self) => self.indexOf(value) === index);
+};
 
-  return flatCategories;
+const getAllPriceRange = async () => {
+  const { data, error } = await supabase.from("places").select("price_range").neq("price_range", "{}");
+
+  if (error) {
+    console.error(error);
+    return [];
+  }
+
+  const priceRange = data
+    .map((item) => {
+      return item.price_range.match(/\d+/g).map((num) => num.replace(/^0+/, ""));
+    })
+    .flat()
+    .map(Number) // Convert to numbers for correct sorting
+    .sort((a, b) => a - b); // Sort numerically
+
+  const uniquePrices = [...new Set(priceRange)]; // Remove duplicates
+
+  const highestPrice = Math.max(...priceRange);
+  const lowestPrice = Math.min(...priceRange);
+
+  return {
+    uniquePrices,
+    highestPrice,
+    lowestPrice,
+  };
 };
 
 export default function PlanTour() {
+  const { data: priceRange, isError } = useQuery({
+    queryKey: ["get-price-range"],
+    queryFn: getAllPriceRange,
+  });
+
   const [criteriaList, setCriteriaList] = useState(criterias);
   const [selectedCategories, setSelectedCategories] = useState([]);
   const [selectedRating, setSelectedRating] = useState(0);
@@ -34,11 +67,38 @@ export default function PlanTour() {
   const [selectedCriteria, setSelectedCriteria] = useState({
     state: criterias[0].options[0].value,
     district: states[0].district[0]?.value || "",
-    rating: criterias[2].options[0].value,
+    rating: null,
     distance: [0],
-    priceRange: 0,
+    priceRange: [0, 100],
     categories: selectedCategories,
+    placeCoordinates: {
+      lat: 0,
+      long: 0,
+    },
   });
+
+  function getCoordinates(place) {
+    const district = districtsCoordinates.find((d) => d.place === place);
+    if (district) {
+      return { lat: district.lat, long: district.long };
+    } else {
+      return null;
+    }
+  }
+
+  const setCurrentLocation = () => {
+    navigator.geolocation.getCurrentPosition((position) => {
+      setSelectedCriteria((prev) => ({
+        ...prev,
+        placeCoordinates: {
+          lat: position.coords.latitude,
+          long: position.coords.longitude,
+        },
+      }));
+    });
+
+    toast.success("Location updated successfully");
+  };
 
   const { data: categoriesData, error } = useQuery({
     queryKey: ["get-categories"],
@@ -61,9 +121,15 @@ export default function PlanTour() {
       ...criterias.filter((criteria) => criteria.value !== "state" && criteria.value !== "district"),
     ]);
 
+    const { lat, long } = getCoordinates(selectedCriteria.district);
+
     setSelectedCriteria((prev) => ({
       ...prev,
       district: districtOptions[0]?.value || "",
+      placeCoordinates: {
+        lat: lat || 0,
+        long: long || 0,
+      },
     }));
   }, [selectedCriteria.state]);
 
@@ -75,32 +141,32 @@ export default function PlanTour() {
   }, [selectedCriteria.state]);
 
   const handleCriteriaChange = (value, criteria) => {
+    if (criteria === "district") {
+      const { lat, long } = getCoordinates(value);
+      setSelectedCriteria((prev) => ({
+        ...prev,
+        [criteria]: value,
+        placeCoordinates: {
+          lat: lat || 0,
+          long: long || 0,
+        },
+      }));
+      return;
+    }
+
     setSelectedCriteria((prev) => ({
       ...prev,
       [criteria]: value,
     }));
   };
 
+  useEffect(() => {
+    console.log(JSON.stringify(selectedCriteria));
+  }, [selectedCriteria]);
+
   const handleRatingChange = (rating) => {
     setSelectedRating(rating);
     handleCriteriaChange(rating, "rating");
-  };
-
-  const updateSelectedCategories = (category) => {
-    setSelectedCategories((prev) => {
-      if (prev.includes(category)) {
-        return prev.filter((item) => item !== category);
-      } else {
-        return [...prev, category];
-      }
-    });
-  };
-
-  const updateSelectedCriteria = (categories) => {
-    setSelectedCriteria((prev) => ({
-      ...prev,
-      categories: categories,
-    }));
   };
 
   const handleCategoryChange = (category) => {
@@ -120,7 +186,14 @@ export default function PlanTour() {
   const handleDistanceChange = (value) => {
     setSelectedCriteria((prev) => ({
       ...prev,
-      distance: value[0],
+      distance: value,
+    }));
+  };
+
+  const handlePriceChange = (value) => {
+    setSelectedCriteria((prev) => ({
+      ...prev,
+      priceRange: value,
     }));
   };
 
@@ -132,7 +205,7 @@ export default function PlanTour() {
 
       <div className="flex w-full gap-8 items-start justify-start">
         {/* Planner Bar */}
-        <div className="w-[25%] border-r-2 pr-10 h-screen">
+        <div className="w-[25%] border-r-2 pr-10 mb-10">
           <h3 className="text-xl font-semibold">Criterias</h3>
           <div className="flex gap-3 flex-col mt-4">
             {/* State */}
@@ -179,8 +252,32 @@ export default function PlanTour() {
               defaultValue={selectedCriteria.distance}
               max={50}
               onValueChange={handleDistanceChange}
-              step={1}
+              step={5}
               valuePlaceholder={`${selectedCriteria.distance} KM`}
+            />
+
+            <div>
+              <button
+                onClick={setCurrentLocation}
+                className="py-1 px-3 bg-orange-500 text-white rounded-md hover:ring-1 hover:ring-orange-500 hover:bg-white hover:text-black"
+              >
+                Use Current Location
+              </button>
+            </div>
+
+            {/* Price */}
+            <RangeInput
+              name={criteriaList[4].name}
+              defaultValue={[0, 100]}
+              min={priceRange?.lowestPrice}
+              max={priceRange?.highestPrice}
+              onValueChange={handlePriceChange}
+              step={10}
+              valuePlaceholder={`RM${selectedCriteria.priceRange[0]} - RM${selectedCriteria.priceRange[1]}`}
+              withInput={true}
+              from={selectedCriteria.priceRange[0]}
+              to={selectedCriteria.priceRange[1]}
+              priceRange={priceRange}
             />
             {/* Categories */}
             <CategoryInput
@@ -198,6 +295,8 @@ export default function PlanTour() {
                 rating: selectedCriteria.rating,
                 distance: selectedCriteria.distance,
                 priceRange: selectedCriteria.priceRange,
+                placeCoordinates: selectedCriteria.placeCoordinates,
+                categories: selectedCriteria.categories,
               }}
               className="inline-flex self-start px-5 py-2 rounded bg-gray-100 hover:bg-orange-500 hover:text-white"
             >
@@ -256,12 +355,49 @@ const CategoryInput = ({ categoriesData, selectedCategories, handleCategoryChang
   </div>
 );
 
-const RangeInput = ({ name, defaultValue, onValueChange, max, step, valuePlaceholder }) => (
-  <div>
-    <label className="capitalize inline-flex self-start w-full text-lg font-medium">{name}</label>
+const RangeInput = ({
+  name,
+  defaultValue,
+  onValueChange,
+  max,
+  step,
+  valuePlaceholder,
+  withInput,
+  from,
+  to,
+  priceRange,
+}) => {
+  return (
     <div>
-      <Slider defaultValue={defaultValue} max={max} step={step} className="mt-3" onValueChange={onValueChange} />
-      <div className="mt-2">{valuePlaceholder}</div>
+      <label className="capitalize inline-flex self-start w-full text-lg font-medium">{name}</label>
+      <div>
+        <Slider defaultValue={defaultValue} max={max} step={step} className="mt-3" onValueChange={onValueChange} />
+        {withInput && (
+          <div className="flex flex-col mt-4 gap-2">
+            <div>
+              <label htmlFor="">From</label>
+              <input
+                type="number"
+                className="appearance-none block w-full px-3 py-1 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-orange-500 focus:border-orange-500 capitalize text-lg"
+                value={from}
+                onChange={(e) => onValueChange(e.target.value)}
+                max={priceRange?.highestPrice}
+                min={priceRange?.lowestPrice}
+              />
+            </div>
+            <div>
+              <label htmlFor="">To</label>
+              <input
+                type="number"
+                className="appearance-none block w-full px-3 py-1 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-orange-500 focus:border-orange-500 capitalize text-lg"
+                value={to}
+                onChange={(e) => onValueChange(e.target.value)}
+              />
+            </div>
+          </div>
+        )}
+        <div className="mt-2">{valuePlaceholder}</div>
+      </div>
     </div>
-  </div>
-);
+  );
+};
