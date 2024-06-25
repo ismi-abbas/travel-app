@@ -9,7 +9,7 @@ const updatePlace = async ({ value, placeId, column }) => {
   const { data, error } = await supabase
     .from("places")
     .update({
-      [column]: value
+      [column]: value,
     })
     .eq("id", placeId)
     .select();
@@ -28,12 +28,12 @@ export function DataTable({ columns, defaultData }) {
     mutationKey: "updatePlace",
     onError: (e) => {
       toast(`Failed to edit place ${e}`);
-    }
+    },
   });
 
   const [pagination, setPagination] = useState({
     pageIndex: 0, //initial page index
-    pageSize: 10 //default page size
+    pageSize: 10, //default page size
   });
 
   const table = useReactTable({
@@ -43,7 +43,7 @@ export function DataTable({ columns, defaultData }) {
     getPaginationRowModel: getPaginationRowModel(),
     onPaginationChange: setPagination, //update the pagination state when internal APIs mutate the pagination state
     state: {
-      pagination
+      pagination,
     },
     meta: {
       editedRows,
@@ -52,7 +52,7 @@ export function DataTable({ columns, defaultData }) {
         mutate({
           value: value,
           placeId: data[rowIndex].id,
-          column: columnId
+          column: columnId,
         });
 
         setData((old) =>
@@ -60,11 +60,11 @@ export function DataTable({ columns, defaultData }) {
             if (index === rowIndex) {
               return {
                 ...old[rowIndex],
-                [columnId]: value
+                [columnId]: value,
               };
             }
             return row;
-          })
+          }),
         );
       },
       revertData: (rowIndex, revert) => {
@@ -73,8 +73,8 @@ export function DataTable({ columns, defaultData }) {
         } else {
           setOriginalData((old) => old.map((row, index) => (index === rowIndex ? data[rowIndex] : row)));
         }
-      }
-    }
+      },
+    },
   });
 
   return (

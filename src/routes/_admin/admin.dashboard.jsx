@@ -5,7 +5,7 @@ import { columns } from "../../components/data-table/columns.jsx";
 import supabase from "../../lib/supabase";
 
 export const Route = createFileRoute("/_admin/admin/dashboard")({
-  component: AdminDashboard
+  component: AdminDashboard,
 });
 
 function AdminDashboard() {
@@ -23,7 +23,7 @@ function AdminDashboard() {
         throw new Error(error);
       }
     },
-    gcTime: 1000 * 60 * 5
+    gcTime: 1000 * 60 * 5,
   });
 
   return (

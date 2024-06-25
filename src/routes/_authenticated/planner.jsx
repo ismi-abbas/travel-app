@@ -4,6 +4,8 @@ import { cn } from "../../lib/utils";
 import supabase from "../../lib/supabase";
 import { useQuery } from "@tanstack/react-query";
 import { Slider } from "../../components/slider";
+import { Star } from "../../components/icons";
+import { criterias } from "../../lib/constant";
 
 export const Route = createFileRoute("/_authenticated/planner")({
   component: PlanTour,
@@ -23,111 +25,19 @@ const getAllCategories = async () => {
   return flatCategories;
 };
 
-export const states = [
-  {
-    name: "Terengganu",
-    value: "terengganu",
-    district: [
-      { name: "Kuala Terengganu", value: "kuala terengganu" },
-      { name: "Marang", value: "marang" },
-      { name: "Kijal", value: "kijal" },
-      { name: "Chukai", value: "chukai" },
-      { name: "Dungun", value: "dungun" },
-      { name: "Paka", value: "paka" },
-      { name: "Kerteh", value: "kerteh" },
-    ],
-  },
-  {
-    name: "Pahang",
-    value: "pahang",
-    district: [
-      { name: "Genting Highlands", value: "genting highlands" },
-      { name: "Brinchang", value: "brinchang" },
-      { name: "Tanah Rata", value: "tanah rata" },
-      { name: "Janda Baik", value: "janda baik" },
-      { name: "Temerloh", value: "temerloh" },
-      { name: "Jerantut", value: "jerantut" },
-      { name: "Raub", value: "raub" },
-      { name: "Mentakab", value: "mentakab" },
-      { name: "Kuala Tahan", value: "kuala tahan" },
-      { name: "Kuala Rompin", value: "kuala rompin" },
-      { name: "Bukit Tinggi", value: "bukit tinggi" },
-      { name: "Bentong", value: "bentong" },
-      { name: "Kuantan", value: "kuantan" },
-      { name: "Cherating", value: "cherating" },
-      { name: "Kampung Temiang", value: "kampung temiang" },
-      { name: "Ringlet", value: "ringlet" },
-    ],
-  },
-  {
-    name: "Kelantan",
-    value: "kelantan",
-    district: [
-      { name: "Kota Bharu", value: "kota bharu" },
-      { name: "Tumpat", value: "tumpat" },
-    ],
-  },
-];
-
-const criterias = [
-  {
-    name: "State",
-    value: "state",
-    options: states.map((state) => ({
-      name: state.name,
-      value: state.value,
-    })),
-  },
-  {
-    name: "District",
-    value: "district",
-    options: [
-      {
-        name: "test",
-        value: "test",
-      },
-    ],
-  },
-  {
-    name: "Rating",
-    value: "rating",
-    options: [
-      { name: "1", value: "5" },
-      { name: "2", value: "4" },
-      { name: "3", value: "3" },
-      { name: "4", value: "3" },
-      { name: "5", value: "3" },
-    ],
-  },
-  {
-    name: "Distance",
-    value: 0,
-  },
-  {
-    name: "Price Range",
-    value: "priceRange",
-    options: [
-      { name: "Cheap", value: "cheap" },
-      { name: "Affordable", value: "affordable" },
-      { name: "Pricey", value: "pricey" },
-    ],
-  },
-  {
-    name: "Category",
-    value: "category",
-    options: [],
-  },
-];
-
 export default function PlanTour() {
   const [criteriaList, setCriteriaList] = useState(criterias);
-  const [selectedState, setSelectedState] = useState("kelantan");
+  const [selectedCategories, setSelectedCategories] = useState([]);
+  const [selectedRating, setSelectedRating] = useState(0);
+  const [hoveredRating, setHoveredRating] = useState(0);
+
   const [selectedCriteria, setSelectedCriteria] = useState({
     state: criterias[0].options[0].value,
     district: states[0].district[0]?.value || "",
     rating: criterias[2].options[0].value,
-    distance: criterias[3].options[0].value,
-    priceRange: criterias[4].options[0].value,
+    distance: [0],
+    priceRange: 0,
+    categories: selectedCategories,
   });
 
   const { data: categoriesData, error } = useQuery({
@@ -138,52 +48,45 @@ export default function PlanTour() {
 
   useEffect(() => {
     const stateCriteria = criterias.find((criteria) => criteria.value === "state");
-    const districtOptions = states.find((state) => state.value === selectedState)?.district || [];
+    const districtOptions = states.find((state) => state.value === selectedCriteria.state)?.district || [];
     const districtCriteria = {
       name: "District",
       value: "district",
       options: districtOptions,
     };
 
-    const newCriteriaList = [
+    setCriteriaList([
       stateCriteria,
       districtCriteria,
       ...criterias.filter((criteria) => criteria.value !== "state" && criteria.value !== "district"),
-    ];
-
-    setCriteriaList(newCriteriaList);
+    ]);
 
     setSelectedCriteria((prev) => ({
       ...prev,
       district: districtOptions[0]?.value || "",
     }));
-  }, [selectedState]);
+  }, [selectedCriteria.state]);
+
+  useEffect(() => {
+    setSelectedCriteria((prev) => ({
+      ...prev,
+      district: states.find((state) => state.value === prev.state)?.district[0]?.value || "",
+    }));
+  }, [selectedCriteria.state]);
 
   const handleCriteriaChange = (value, criteria) => {
-    if (criteria === "state") {
-      setSelectedState(value);
-    }
     setSelectedCriteria((prev) => ({
       ...prev,
       [criteria]: value,
     }));
   };
 
-  useEffect(() => {
-    console.log(selectedCriteria);
-  }, [selectedCriteria]);
-
-  const [selectedRating, setSelectedRating] = useState(0);
-  const [hoveredRating, setHoveredRating] = useState(0);
-
   const handleRatingChange = (rating) => {
     setSelectedRating(rating);
     handleCriteriaChange(rating, "rating");
   };
 
-  const [selectedCategories, setSelectedCategories] = useState([]);
-
-  const handleCategoryChange = (category) => {
+  const updateSelectedCategories = (category) => {
     setSelectedCategories((prev) => {
       if (prev.includes(category)) {
         return prev.filter((item) => item !== category);
@@ -193,9 +96,32 @@ export default function PlanTour() {
     });
   };
 
-  const handleDistanceChange = (e) => {
-    // handleCriteriaChange(value, "distance");
-    console.log(e.target.value);
+  const updateSelectedCriteria = (categories) => {
+    setSelectedCriteria((prev) => ({
+      ...prev,
+      categories: categories,
+    }));
+  };
+
+  const handleCategoryChange = (category) => {
+    setSelectedCategories((prev) => {
+      const updatedCategories = prev.includes(category)
+        ? prev.filter((item) => item !== category)
+        : [...prev, category];
+
+      setSelectedCriteria((prevCriteria) => ({
+        ...prevCriteria,
+        categories: updatedCategories,
+      }));
+      return updatedCategories;
+    });
+  };
+
+  const handleDistanceChange = (value) => {
+    setSelectedCriteria((prev) => ({
+      ...prev,
+      distance: value[0],
+    }));
   };
 
   return (
@@ -210,108 +136,58 @@ export default function PlanTour() {
           <h3 className="text-xl font-semibold">Criterias</h3>
           <div className="flex gap-3 flex-col mt-4">
             {/* State */}
-            <div>
-              <label className="capitalize inline-flex self-start w-full text-lg font-medium">State</label>
-              <select
-                className="appearance-none block w-full px-3 py-1 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-orange-500 focus:border-orange-500 mt-2 capitalize text-lg"
-                name="state"
-                onChange={(e) => handleCriteriaChange(e.target.value, value)}
-              >
-                {states.map((state, index) => (
-                  <option className="capitalize" key={index} value={state.value}>
-                    {state.name}
-                  </option>
-                ))}
-              </select>
-            </div>
+            <SelectInput
+              label="State"
+              name="state"
+              value={selectedCriteria.state}
+              options={states.map((state) => ({ name: state.name, value: state.value }))}
+              onChange={(e) => handleCriteriaChange(e.target.value, "state")}
+            />
             {/* District */}
-            <div>
-              <label className="capitalize inline-flex self-start w-full text-lg font-medium">
-                {criteriaList[1].name}
-              </label>
-              <select
-                className="appearance-none block w-full px-3 py-1 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-orange-500 focus:border-orange-500 mt-2 capitalize text-lg"
-                name="state"
-                onChange={(e) => handleCriteriaChange(e.target.value, value)}
-              >
-                {states.map((state, index) => (
-                  <option className="capitalize" key={index} value={state.value}>
-                    {state.name}
-                  </option>
-                ))}
-              </select>
-            </div>
+            <SelectInput
+              label="District"
+              name="district"
+              value={selectedCriteria.district}
+              options={criteriaList[1].options}
+              onChange={(e) => handleCriteriaChange(e.target.value, "district")}
+            />
             {/* Rating */}
             <div>
               <label className="capitalize inline-flex self-start w-full text-lg font-medium">
                 {criteriaList[2].name}
               </label>
-              <div className="" name="state">
+              <div className="" name="rating">
                 <div className="flex">
-                  {Array.from([1, 2, 3, 4, 5]).map((item) => (
-                    <svg
-                      key={item}
-                      xmlns="http://www.w3.org/2000/svg"
-                      width="32"
-                      height="32"
-                      viewBox="0 0 24 24"
+                  {Array.from([1, 2, 3, 4, 5]).map((item, index) => (
+                    <Star
+                      key={index}
                       className={cn(
-                        "cursor-pointer hover:text-orange-400 text-gray-300",
+                        "cursor-pointer hover:text-orange-400 text-gray-300 size-8",
                         (selectedRating >= item || hoveredRating >= item) && "text-orange-500",
                       )}
                       onMouseEnter={() => setHoveredRating(item)}
                       onMouseLeave={() => setHoveredRating(0)}
                       onClick={() => handleRatingChange(item)}
-                    >
-                      <path
-                        fill="currentColor"
-                        d="m7.625 6.4l2.8-3.625q.3-.4.713-.587T12 2t.863.188t.712.587l2.8 3.625l4.25 1.425q.65.2 1.025.738t.375 1.187q0 .3-.088.6t-.287.575l-2.75 3.9l.1 4.1q.025.875-.575 1.475t-1.4.6q-.05 0-.55-.075L12 19.675l-4.475 1.25q-.125.05-.275.063T6.975 21q-.8 0-1.4-.6T5 18.925l.1-4.125l-2.725-3.875q-.2-.275-.288-.575T2 9.75q0-.625.363-1.162t1.012-.763z"
-                      />
-                    </svg>
+                    />
                   ))}
                 </div>
               </div>
             </div>
             {/* Distance */}
-            <div>
-              <label className="capitalize inline-flex self-start w-full text-lg font-medium">
-                {criteriaList[3].name}
-              </label>
-              <select>
-                <Slider
-                  defaultValue={[33]}
-                  max={100}
-                  step={1}
-                  value={criteriaList[3].name}
-                  onChange={handleDistanceChange}
-                />
-              </select>
-            </div>
+            <RangeInput
+              name={criteriaList[3].name}
+              defaultValue={selectedCriteria.distance}
+              max={50}
+              onValueChange={handleDistanceChange}
+              step={1}
+              valuePlaceholder={`${selectedCriteria.distance} KM`}
+            />
             {/* Categories */}
-            <div>
-              <label className="capitalize inline-flex self-start w-full text-lg font-medium">
-                {criteriaList[5].name}
-              </label>
-              <div className="mt-2">
-                {categoriesData &&
-                  categoriesData.map((category, index) => (
-                    <div key={index} className="flex items-center justify-start gap-2">
-                      <input
-                        type="checkbox"
-                        id={`category-${index}`}
-                        name={category}
-                        value={category}
-                        className="size-5"
-                        checked={selectedCategories.includes(category)}
-                        onChange={() => handleCategoryChange(category)}
-                      />
-                      <label htmlFor={`category-${index}`} className="capitalize text-lg flex-1">
-                        {category}
-                      </label>
-                    </div>
-                  ))}
-              </div>
-            </div>
+            <CategoryInput
+              categoriesData={categoriesData}
+              selectedCategories={selectedCategories}
+              handleCategoryChange={handleCategoryChange}
+            />
           </div>
           <div className="flex w-full flex-col mt-4">
             <Link
@@ -337,21 +213,55 @@ export default function PlanTour() {
   );
 }
 
-function CriteriaField({ name, value, options, handleCriteriaChange }) {
-  return (
-    <div className="">
-      <label className="capitalize inline-flex self-start w-full text-lg font-medium">{name}</label>
-      <select
-        className="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-orange-500 focus:border-orange-500 mt-2 capitalize text-lg"
-        name={name}
-        onChange={(e) => handleCriteriaChange(e.target.value, value)}
-      >
-        {options.map((option, index) => (
-          <option className="capitalize" key={index} value={option.value}>
-            {option.name}
-          </option>
+const SelectInput = ({ label, name, value, options, onChange }) => (
+  <div>
+    <label className="capitalize inline-flex self-start w-full text-lg font-medium">{label}</label>
+    <select
+      className="appearance-none block w-full px-3 py-1 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-orange-500 focus:border-orange-500 mt-2 capitalize text-lg"
+      name={name}
+      value={value}
+      onChange={onChange}
+    >
+      {options.map((option, index) => (
+        <option className="capitalize" key={index} value={option.value}>
+          {option.name}
+        </option>
+      ))}
+    </select>
+  </div>
+);
+
+const CategoryInput = ({ categoriesData, selectedCategories, handleCategoryChange }) => (
+  <div>
+    <label className="capitalize inline-flex self-start w-full text-lg font-medium">Categories</label>
+    <div className="mt-2">
+      {categoriesData &&
+        categoriesData.map((category, index) => (
+          <div key={index} className="flex items-center justify-start gap-2">
+            <input
+              type="checkbox"
+              id={`category-${index}`}
+              name={category}
+              value={category}
+              className="size-5"
+              checked={selectedCategories.includes(category)}
+              onChange={() => handleCategoryChange(category)}
+            />
+            <label htmlFor={`category-${index}`} className="capitalize text-lg flex-1">
+              {category}
+            </label>
+          </div>
         ))}
-      </select>
     </div>
-  );
-}
+  </div>
+);
+
+const RangeInput = ({ name, defaultValue, onValueChange, max, step, valuePlaceholder }) => (
+  <div>
+    <label className="capitalize inline-flex self-start w-full text-lg font-medium">{name}</label>
+    <div>
+      <Slider defaultValue={defaultValue} max={max} step={step} className="mt-3" onValueChange={onValueChange} />
+      <div className="mt-2">{valuePlaceholder}</div>
+    </div>
+  </div>
+);

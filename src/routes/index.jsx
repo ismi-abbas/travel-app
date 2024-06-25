@@ -118,9 +118,7 @@ const Places = () => {
             <h2 className="text-2xl font-semibold capitalize mb-4">{state}</h2>
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
               {data[state].length > 0 ? (
-                data[state].map((place) => (
-                  <PlaceCard key={place.id} place={place} />
-                ))
+                data[state].map((place) => <PlaceCard key={place.id} place={place} />)
               ) : (
                 <div className="places flex flex-col items-center">
                   <p className="text-center">No Places Found</p>

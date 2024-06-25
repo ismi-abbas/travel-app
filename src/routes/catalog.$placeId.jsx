@@ -34,7 +34,10 @@ function DetailsComponent() {
           data && (
             <div className="flex flex-1 justify-center flex-col px-20 mt-10">
               <div className="flex items-start my-2">
-                <button className="bg-orange-500 text-white px-6 py-2 rounded-md hover:bg-white hover:ring-orange-500 hover:text-black hover:ring-1" onClick={() => window.history.back()}>
+                <button
+                  className="bg-orange-500 text-white px-6 py-2 rounded-md hover:bg-white hover:ring-orange-500 hover:text-black hover:ring-1"
+                  onClick={() => window.history.back()}
+                >
                   Back
                 </button>
               </div>

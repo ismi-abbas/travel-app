@@ -5,7 +5,9 @@ import { placeSchema, type NewPlace } from "./schema.js";
 
 const connectionString = process.env.DATABASE_URL!;
 console.log(connectionString);
-const client = postgres("postgres://postgres.wwzzoszfysebgreeduxf:A8OnhWtAA1u5Pwab@aws-0-ap-southeast-1.pooler.supabase.com:6543/postgres");
+const client = postgres(
+  "postgres://postgres.wwzzoszfysebgreeduxf:A8OnhWtAA1u5Pwab@aws-0-ap-southeast-1.pooler.supabase.com:6543/postgres",
+);
 const db = drizzle(client);
 
 if (!places) {

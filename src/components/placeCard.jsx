@@ -53,11 +53,11 @@ export const PlaceCardHorizontal = ({ place }) => (
     params={{ placeId: place.id }}
     className="flex place w-full bg-white border rounded-lg overflow-hidden hover:cursor-pointer hover:shadow-xl hover:border-zinc-200"
   >
-      <img
-        src={place.image !== "" ? place.image : "https://via.placeholder.com/400x200?text=No+Image"}
-        alt={place.name}
-        className="size-[240px] object-cover"
-      />
+    <img
+      src={place.image !== "" ? place.image : "https://via.placeholder.com/400x200?text=No+Image"}
+      alt={place.name}
+      className="size-[240px] object-cover"
+    />
     <div className="p-4 flex flex-col justify-end">
       <h3 className="text-xl font-semibold mb-2 w-full truncate">{place.name}</h3>
       {/* Details */}

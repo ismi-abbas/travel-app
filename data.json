@@ -1946,13 +1946,7 @@
     ],
     "hotelClass": "3.0",
     "hotelClassAttribution": "This property is classified according to Giata.",
-    "amenities": [
-      "Free Wifi",
-      "Air conditioning",
-      "Bath / Shower",
-      "Bottled Water",
-      "Malay"
-    ],
+    "amenities": ["Free Wifi", "Air conditioning", "Bath / Shower", "Bottled Water", "Malay"],
     "numberOfRooms": null,
     "categoryReviewScores": [
       { "categoryName": "Location", "score": 4.8 },
@@ -8232,12 +8226,7 @@
     "numberOfReviews": 30,
     "reviewTags": [],
     "hotelClass": "0.0",
-    "amenities": [
-      "Kids Activities",
-      "Free parking",
-      "Non-smoking rooms",
-      "Non-smoking hotel"
-    ],
+    "amenities": ["Kids Activities", "Free parking", "Non-smoking rooms", "Non-smoking hotel"],
     "numberOfRooms": 10,
     "categoryReviewScores": [],
     "priceLevel": null,
@@ -9821,13 +9810,7 @@
     ],
     "hotelClass": "3.0",
     "hotelClassAttribution": "This property is classified according to Accor Hotels.",
-    "amenities": [
-      "Free Wifi",
-      "Air conditioning",
-      "Desk",
-      "24-Hour Front Desk",
-      "Restaurant"
-    ],
+    "amenities": ["Free Wifi", "Air conditioning", "Desk", "24-Hour Front Desk", "Restaurant"],
     "numberOfRooms": null,
     "categoryReviewScores": [
       { "categoryName": "Location", "score": 4.4 },
@@ -17621,13 +17604,7 @@
     "numberOfReviews": 5,
     "reviewTags": [],
     "hotelClass": "0.0",
-    "amenities": [
-      "Internet",
-      "Kids Activities",
-      "Wifi",
-      "Air conditioning",
-      "Refrigerator in room"
-    ],
+    "amenities": ["Internet", "Kids Activities", "Wifi", "Air conditioning", "Refrigerator in room"],
     "numberOfRooms": 12,
     "categoryReviewScores": [
       { "categoryName": "Location", "score": 2.7 },
@@ -22061,14 +22038,7 @@
       { "text": "turtles", "reviews": 5 }
     ],
     "hotelClass": "0.0",
-    "amenities": [
-      "Beachfront",
-      "Air conditioning",
-      "Beach Access",
-      "Bar/Lounge",
-      "Laundry Service",
-      "Private Beaches"
-    ],
+    "amenities": ["Beachfront", "Air conditioning", "Beach Access", "Bar/Lounge", "Laundry Service", "Private Beaches"],
     "numberOfRooms": 17,
     "categoryReviewScores": [
       { "categoryName": "Location", "score": 4.4 },
@@ -28630,13 +28600,7 @@
     "reviewTags": [],
     "hotelClass": "3.0",
     "hotelClassAttribution": "This property is classified according to Giata.",
-    "amenities": [
-      "Restaurant",
-      "Pool",
-      "Beachfront",
-      "Outdoor pool",
-      "Beach Access"
-    ],
+    "amenities": ["Restaurant", "Pool", "Beachfront", "Outdoor pool", "Beach Access"],
     "numberOfRooms": 60,
     "categoryReviewScores": [
       { "categoryName": "Location", "score": 3.2 },
@@ -29366,13 +29330,7 @@
     "openNowText": "Closed Now",
     "priceLevel": "$$ - $$$",
     "priceRange": null,
-    "cuisines": [
-      "Indian",
-      "Asian",
-      "Malaysian",
-      "Vegetarian Friendly",
-      "Vegan Options"
-    ],
+    "cuisines": ["Indian", "Asian", "Malaysian", "Vegetarian Friendly", "Vegan Options"],
     "mealTypes": ["Lunch", "Dinner", "Brunch"],
     "dishes": ["Curry", "Lamb", "Fish"],
     "features": ["Takeout", "Table Service", "Seating"],
@@ -29685,13 +29643,7 @@
     "cuisines": ["Seafood", "Asian", "Chinese", "Malaysian"],
     "mealTypes": ["Lunch", "Dinner"],
     "dishes": ["Prawns", "Fish", "Pork"],
-    "features": [
-      "Takeout",
-      "Reservations",
-      "Serves Alcohol",
-      "Seating",
-      "Table Service"
-    ],
+    "features": ["Takeout", "Reservations", "Serves Alcohol", "Seating", "Table Service"],
     "dietaryRestrictions": ["Lunch", "Dinner"],
     "hours": null,
     "menuWebUrl": null,
@@ -29994,14 +29946,7 @@
     "cuisines": ["Chinese", "Asian", "Malaysian", "Seafood"],
     "mealTypes": ["Dinner", "Lunch", "Late Night"],
     "dishes": ["Hot Pot", "Fish", "Pork"],
-    "features": [
-      "Takeout",
-      "Reservations",
-      "Seating",
-      "Serves Alcohol",
-      "Wheelchair Accessible",
-      "Table Service"
-    ],
+    "features": ["Takeout", "Reservations", "Seating", "Serves Alcohol", "Wheelchair Accessible", "Table Service"],
     "dietaryRestrictions": ["Dinner", "Lunch", "Late Night"],
     "hours": null,
     "menuWebUrl": null,
@@ -30078,14 +30023,7 @@
     "openNowText": "Open Now",
     "priceLevel": "$",
     "priceRange": null,
-    "cuisines": [
-      "Chinese",
-      "Asian",
-      "Street Food",
-      "Taiwanese",
-      "Soups",
-      "Malaysian"
-    ],
+    "cuisines": ["Chinese", "Asian", "Street Food", "Taiwanese", "Soups", "Malaysian"],
     "mealTypes": ["Breakfast", "Lunch"],
     "dishes": ["Noodle", "Curry"],
     "features": ["Takeout", "Seating", "Table Service"],
@@ -30228,12 +30166,7 @@
     "cuisines": ["Chinese", "Asian", "Seafood"],
     "mealTypes": ["Lunch", "Dinner"],
     "dishes": [],
-    "features": [
-      "Takeout",
-      "Seating",
-      "Wheelchair Accessible",
-      "Table Service"
-    ],
+    "features": ["Takeout", "Seating", "Wheelchair Accessible", "Table Service"],
     "dietaryRestrictions": ["Lunch", "Dinner"],
     "hours": {
       "weekRanges": [
@@ -30411,14 +30344,7 @@
     "openNowText": "Opens in 13 min",
     "priceLevel": "$$ - $$$",
     "priceRange": null,
-    "cuisines": [
-      "Chinese",
-      "Seafood",
-      "Asian",
-      "Soups",
-      "Malaysian",
-      "Vegetarian Friendly"
-    ],
+    "cuisines": ["Chinese", "Seafood", "Asian", "Soups", "Malaysian", "Vegetarian Friendly"],
     "mealTypes": ["Lunch", "Dinner", "Late Night"],
     "dishes": ["Prawns", "Fish", "Pork"],
     "features": [
@@ -30632,14 +30558,7 @@
     "openNowText": null,
     "priceLevel": "$",
     "priceRange": "MYR 14 - MYR 142",
-    "cuisines": [
-      "Chinese",
-      "Asian",
-      "Thai",
-      "Malaysian",
-      "Vegetarian Friendly",
-      "Vegan Options"
-    ],
+    "cuisines": ["Chinese", "Asian", "Thai", "Malaysian", "Vegetarian Friendly", "Vegan Options"],
     "mealTypes": ["Breakfast", "Lunch", "Dinner", "Brunch"],
     "dishes": ["Juice & Smoothies", "Noodle", "Pancakes", "Fried rice"],
     "features": ["Takeout", "Seating", "Serves Alcohol", "Table Service"],
@@ -30821,14 +30740,7 @@
     "cuisines": ["Seafood", "Barbecue", "Malaysian"],
     "mealTypes": ["Lunch", "Breakfast", "Dinner"],
     "dishes": ["Juice & Smoothies", "Burger", "Curry", "Fish"],
-    "features": [
-      "Outdoor Seating",
-      "Seating",
-      "Table Service",
-      "Reservations",
-      "Highchairs Available",
-      "Free Wifi"
-    ],
+    "features": ["Outdoor Seating", "Seating", "Table Service", "Reservations", "Highchairs Available", "Free Wifi"],
     "dietaryRestrictions": ["Lunch", "Breakfast", "Dinner"],
     "hours": null,
     "menuWebUrl": null,
@@ -30919,15 +30831,7 @@
     "priceRange": "MYR 5 - MYR 302",
     "cuisines": ["Asian", "Malaysian", "Halal", "Vegetarian Friendly"],
     "mealTypes": ["Dinner", "Late Night"],
-    "dishes": [
-      "Cheesecake",
-      "Burger",
-      "Wings",
-      "Beef",
-      "Lamb",
-      "Cakes",
-      "Fried rice"
-    ],
+    "dishes": ["Cheesecake", "Burger", "Wings", "Beef", "Lamb", "Cakes", "Fried rice"],
     "features": [
       "Takeout",
       "Outdoor Seating",
@@ -31093,23 +30997,8 @@
     "priceRange": "MYR 24 - MYR 47",
     "cuisines": ["Asian", "Malaysian", "Halal"],
     "mealTypes": ["Dinner", "Late Night"],
-    "dishes": [
-      "Noodle",
-      "Curry",
-      "Tripe",
-      "Beef",
-      "Lamb",
-      "Fried rice",
-      "Fish"
-    ],
-    "features": [
-      "Takeout",
-      "Outdoor Seating",
-      "Seating",
-      "Parking Available",
-      "Highchairs Available",
-      "Table Service"
-    ],
+    "dishes": ["Noodle", "Curry", "Tripe", "Beef", "Lamb", "Fried rice", "Fish"],
+    "features": ["Takeout", "Outdoor Seating", "Seating", "Parking Available", "Highchairs Available", "Table Service"],
     "dietaryRestrictions": ["Dinner", "Late Night"],
     "hours": {
       "weekRanges": [
@@ -31491,12 +31380,7 @@
     "cuisines": ["Asian", "Malaysian", "Halal"],
     "mealTypes": ["Lunch", "Dinner"],
     "dishes": ["Ice Cream"],
-    "features": [
-      "Takeout",
-      "Seating",
-      "Parking Available",
-      "Wheelchair Accessible"
-    ],
+    "features": ["Takeout", "Seating", "Parking Available", "Wheelchair Accessible"],
     "dietaryRestrictions": ["Lunch", "Dinner"],
     "hours": {
       "weekRanges": [
@@ -31740,13 +31624,7 @@
     "openNowText": "Closed Now",
     "priceLevel": "$$ - $$$",
     "priceRange": "MYR 24 - MYR 142",
-    "cuisines": [
-      "Japanese",
-      "Korean",
-      "Healthy",
-      "Vegan Options",
-      "Vegetarian Friendly"
-    ],
+    "cuisines": ["Japanese", "Korean", "Healthy", "Vegan Options", "Vegetarian Friendly"],
     "mealTypes": ["Lunch", "Dinner"],
     "dishes": ["Noodle", "Bibimbap", "Ramen", "Bento (Lunch Box)"],
     "features": [
@@ -32401,12 +32279,7 @@
     "cuisines": ["Seafood", "Asian", "Malaysian"],
     "mealTypes": ["Dinner", "Lunch"],
     "dishes": ["Fish"],
-    "features": [
-      "Outdoor Seating",
-      "Seating",
-      "Wheelchair Accessible",
-      "Table Service"
-    ],
+    "features": ["Outdoor Seating", "Seating", "Wheelchair Accessible", "Table Service"],
     "dietaryRestrictions": ["Dinner", "Lunch"],
     "hours": null,
     "menuWebUrl": null,
@@ -32742,14 +32615,7 @@
     "openNowText": "Open Now",
     "priceLevel": "$",
     "priceRange": null,
-    "cuisines": [
-      "Asian",
-      "Malaysian",
-      "Vegan Options",
-      "Halal",
-      "Gluten Free Options",
-      "Vegetarian Friendly"
-    ],
+    "cuisines": ["Asian", "Malaysian", "Vegan Options", "Halal", "Gluten Free Options", "Vegetarian Friendly"],
     "mealTypes": ["Lunch", "Brunch"],
     "dishes": ["Salad", "Crawfish", "Catfish", "Fish"],
     "features": [
@@ -32984,15 +32850,7 @@
     "openNowText": "Closed Now",
     "priceLevel": "$$ - $$$",
     "priceRange": "MYR 14 - MYR 142",
-    "cuisines": [
-      "Chinese",
-      "Asian",
-      "Malaysian",
-      "Fusion",
-      "Vegetarian Friendly",
-      "Vegan Options",
-      "Halal"
-    ],
+    "cuisines": ["Chinese", "Asian", "Malaysian", "Fusion", "Vegetarian Friendly", "Vegan Options", "Halal"],
     "mealTypes": ["Lunch", "Dinner"],
     "dishes": ["Noodle", "Beef"],
     "features": [
@@ -33873,23 +33731,10 @@
     "openNowText": null,
     "priceLevel": "$$ - $$$",
     "priceRange": null,
-    "cuisines": [
-      "Indian",
-      "Asian",
-      "Vegetarian Friendly",
-      "Vegan Options",
-      "Halal"
-    ],
+    "cuisines": ["Indian", "Asian", "Vegetarian Friendly", "Vegan Options", "Halal"],
     "mealTypes": ["Lunch", "Dinner", "Brunch", "Late Night"],
     "dishes": ["Curry", "Fish"],
-    "features": [
-      "Takeout",
-      "Reservations",
-      "Seating",
-      "Highchairs Available",
-      "Table Service",
-      "Serves Alcohol"
-    ],
+    "features": ["Takeout", "Reservations", "Seating", "Highchairs Available", "Table Service", "Serves Alcohol"],
     "dietaryRestrictions": ["Lunch", "Dinner", "Brunch", "Late Night"],
     "hours": null,
     "menuWebUrl": "http://spicegardenasia.net/menu.html",
@@ -35214,13 +35059,7 @@
     "cuisines": ["Asian", "Vegetarian Friendly", "Halal"],
     "mealTypes": ["Lunch", "Dinner", "Brunch"],
     "dishes": ["Pesto"],
-    "features": [
-      "Takeout",
-      "Reservations",
-      "Seating",
-      "Highchairs Available",
-      "Table Service"
-    ],
+    "features": ["Takeout", "Reservations", "Seating", "Highchairs Available", "Table Service"],
     "dietaryRestrictions": ["Lunch", "Dinner", "Brunch"],
     "hours": {
       "weekRanges": [
@@ -35598,13 +35437,7 @@
     "cuisines": ["Brew Pub", "Bar", "Grill", "Gastropub", "Cafe", "Wine Bar"],
     "mealTypes": ["Lunch", "Dinner"],
     "dishes": ["Juice & Smoothies", "Ribs", "Pork"],
-    "features": [
-      "Seating",
-      "Wheelchair Accessible",
-      "Serves Alcohol",
-      "Table Service",
-      "Reservations"
-    ],
+    "features": ["Seating", "Wheelchair Accessible", "Serves Alcohol", "Table Service", "Reservations"],
     "dietaryRestrictions": ["Lunch", "Dinner"],
     "hours": null,
     "menuWebUrl": null,
@@ -35684,14 +35517,7 @@
     "cuisines": ["Cafe", "Contemporary", "Asian", "Malaysian"],
     "mealTypes": ["Breakfast", "Lunch", "Dinner", "Brunch", "Drinks"],
     "dishes": [],
-    "features": [
-      "Takeout",
-      "Reservations",
-      "Outdoor Seating",
-      "Street Parking",
-      "Free Wifi",
-      "Accepts Credit Cards"
-    ],
+    "features": ["Takeout", "Reservations", "Outdoor Seating", "Street Parking", "Free Wifi", "Accepts Credit Cards"],
     "dietaryRestrictions": ["Breakfast", "Lunch", "Dinner", "Brunch", "Drinks"],
     "hours": {
       "weekRanges": [
@@ -35927,15 +35753,7 @@
     "openNowText": "Open Now",
     "priceLevel": "$$ - $$$",
     "priceRange": "MYR 24 - MYR 71",
-    "cuisines": [
-      "International",
-      "Asian",
-      "Malaysian",
-      "Seafood",
-      "Barbecue",
-      "Vegetarian Friendly",
-      "Vegan Options"
-    ],
+    "cuisines": ["International", "Asian", "Malaysian", "Seafood", "Barbecue", "Vegetarian Friendly", "Vegan Options"],
     "mealTypes": ["Breakfast", "Lunch", "Dinner", "Brunch", "Drinks"],
     "dishes": ["Burger", "Salad", "Waffles", "Prawns", "Fish"],
     "features": [
@@ -36172,13 +35990,7 @@
     "cuisines": ["Middle Eastern", "Seafood", "Mediterranean", "Halal"],
     "mealTypes": ["Dinner", "Lunch"],
     "dishes": ["Lamb"],
-    "features": [
-      "Reservations",
-      "Outdoor Seating",
-      "Takeout",
-      "Seating",
-      "Table Service"
-    ],
+    "features": ["Reservations", "Outdoor Seating", "Takeout", "Seating", "Table Service"],
     "dietaryRestrictions": ["Dinner", "Lunch"],
     "hours": null,
     "menuWebUrl": null,
@@ -36273,14 +36085,7 @@
     "openNowText": "Open Now",
     "priceLevel": "$",
     "priceRange": null,
-    "cuisines": [
-      "Indian",
-      "Asian",
-      "Healthy",
-      "Vegetarian Friendly",
-      "Vegan Options",
-      "Halal"
-    ],
+    "cuisines": ["Indian", "Asian", "Healthy", "Vegetarian Friendly", "Vegan Options", "Halal"],
     "mealTypes": ["Breakfast", "Lunch", "Dinner", "Brunch", "Late Night"],
     "dishes": [
       "Juice & Smoothies",
@@ -36293,20 +36098,8 @@
       "Fried rice",
       "Fish"
     ],
-    "features": [
-      "Takeout",
-      "Outdoor Seating",
-      "Seating",
-      "Serves Alcohol",
-      "Table Service"
-    ],
-    "dietaryRestrictions": [
-      "Breakfast",
-      "Lunch",
-      "Dinner",
-      "Brunch",
-      "Late Night"
-    ],
+    "features": ["Takeout", "Outdoor Seating", "Seating", "Serves Alcohol", "Table Service"],
+    "dietaryRestrictions": ["Breakfast", "Lunch", "Dinner", "Brunch", "Late Night"],
     "hours": {
       "weekRanges": [
         [
@@ -36630,14 +36423,7 @@
     "priceLevel": "$$ - $$$",
     "priceRange": "MYR 75 - MYR 179",
     "cuisines": ["Bar", "Pizza", "European"],
-    "mealTypes": [
-      "Breakfast",
-      "Lunch",
-      "Dinner",
-      "Brunch",
-      "Late Night",
-      "Drinks"
-    ],
+    "mealTypes": ["Breakfast", "Lunch", "Dinner", "Brunch", "Late Night", "Drinks"],
     "dishes": ["Pasta", "Burger", "Nachos", "Pesto"],
     "features": [
       "Reservations",
@@ -36654,14 +36440,7 @@
       "Free off-street parking",
       "Wine and Beer"
     ],
-    "dietaryRestrictions": [
-      "Breakfast",
-      "Lunch",
-      "Dinner",
-      "Brunch",
-      "Late Night",
-      "Drinks"
-    ],
+    "dietaryRestrictions": ["Breakfast", "Lunch", "Dinner", "Brunch", "Late Night", "Drinks"],
     "hours": {
       "weekRanges": [
         [
@@ -36811,17 +36590,7 @@
     "priceRange": null,
     "cuisines": ["Seafood", "Malaysian", "Vegetarian Friendly"],
     "mealTypes": ["Lunch", "Dinner"],
-    "dishes": [
-      "Pasta",
-      "Burger",
-      "Lobster",
-      "Salad",
-      "Curry",
-      "Prawns",
-      "Beef",
-      "Pesto",
-      "Fish"
-    ],
+    "dishes": ["Pasta", "Burger", "Lobster", "Salad", "Curry", "Prawns", "Beef", "Pesto", "Fish"],
     "features": [
       "Reservations",
       "Outdoor Seating",
@@ -36921,13 +36690,7 @@
     "openNowText": "Open Now",
     "priceLevel": "$",
     "priceRange": null,
-    "cuisines": [
-      "Chinese",
-      "Seafood",
-      "Asian",
-      "Malaysian",
-      "Vegetarian Friendly"
-    ],
+    "cuisines": ["Chinese", "Seafood", "Asian", "Malaysian", "Vegetarian Friendly"],
     "mealTypes": ["Lunch", "Dinner"],
     "dishes": ["Chili", "Prawns", "Beef", "Fried rice", "Fish"],
     "features": [
@@ -37202,16 +36965,7 @@
     "priceRange": null,
     "cuisines": ["Mediterranean", "European", "Vegetarian Friendly", "Halal"],
     "mealTypes": ["Dinner", "Late Night"],
-    "dishes": [
-      "Pasta",
-      "Tapas",
-      "Salad",
-      "Lamb chops",
-      "Salmon",
-      "Beef",
-      "Lamb",
-      "Pesto"
-    ],
+    "dishes": ["Pasta", "Tapas", "Salad", "Lamb chops", "Salmon", "Beef", "Lamb", "Pesto"],
     "features": [
       "Takeout",
       "Reservations",
@@ -37465,13 +37219,7 @@
     "openNowText": "Closed Now",
     "priceLevel": "$$ - $$$",
     "priceRange": null,
-    "cuisines": [
-      "Japanese",
-      "Sushi",
-      "Asian",
-      "Vegetarian Friendly",
-      "Vegan Options"
-    ],
+    "cuisines": ["Japanese", "Sushi", "Asian", "Vegetarian Friendly", "Vegan Options"],
     "mealTypes": ["Lunch", "Dinner"],
     "dishes": [
       "Bibimbap",
@@ -38335,22 +38083,10 @@
     "openNowText": null,
     "priceLevel": "$$ - $$$",
     "priceRange": null,
-    "cuisines": [
-      "Chinese",
-      "Asian",
-      "Seafood",
-      "Malaysian",
-      "Vegetarian Friendly"
-    ],
+    "cuisines": ["Chinese", "Asian", "Seafood", "Malaysian", "Vegetarian Friendly"],
     "mealTypes": ["Lunch", "Dinner"],
     "dishes": ["Prawns", "Fish", "Pork"],
-    "features": [
-      "Takeout",
-      "Reservations",
-      "Table Service",
-      "Seating",
-      "Wheelchair Accessible"
-    ],
+    "features": ["Takeout", "Reservations", "Table Service", "Seating", "Wheelchair Accessible"],
     "dietaryRestrictions": ["Lunch", "Dinner"],
     "hours": null,
     "menuWebUrl": null,
@@ -38799,14 +38535,7 @@
     "openNowText": "Closed Now",
     "priceLevel": "$$ - $$$",
     "priceRange": "MYR 94 - MYR 377",
-    "cuisines": [
-      "Bar",
-      "Pub",
-      "Fusion",
-      "Beer restaurants",
-      "Vegetarian Friendly",
-      "Vegan Options"
-    ],
+    "cuisines": ["Bar", "Pub", "Fusion", "Beer restaurants", "Vegetarian Friendly", "Vegan Options"],
     "mealTypes": ["Lunch", "Dinner", "Brunch", "Late Night", "Drinks"],
     "dishes": ["Pasta", "Pesto"],
     "features": [
@@ -38823,13 +38552,7 @@
       "Digital Payments",
       "Live Music"
     ],
-    "dietaryRestrictions": [
-      "Lunch",
-      "Dinner",
-      "Brunch",
-      "Late Night",
-      "Drinks"
-    ],
+    "dietaryRestrictions": ["Lunch", "Dinner", "Brunch", "Late Night", "Drinks"],
     "hours": {
       "weekRanges": [
         [
@@ -39072,18 +38795,7 @@
     "priceRange": "MYR 142 - MYR 1,415",
     "cuisines": ["International"],
     "mealTypes": ["Lunch", "Dinner", "Drinks"],
-    "dishes": [
-      "Crab",
-      "Burger",
-      "Lobster",
-      "Lobster Roll",
-      "Salad",
-      "Chili",
-      "Chili Crab",
-      "Clams",
-      "Toasts",
-      "Beef"
-    ],
+    "dishes": ["Crab", "Burger", "Lobster", "Lobster Roll", "Salad", "Chili", "Chili Crab", "Clams", "Toasts", "Beef"],
     "features": [
       "Takeout",
       "Seating",
@@ -39506,14 +39218,7 @@
     "priceRange": null,
     "cuisines": ["Seafood", "Barbecue", "Asian", "Malaysian", "Halal"],
     "mealTypes": ["Dinner"],
-    "dishes": [
-      "Juice & Smoothies",
-      "Crab",
-      "Omelette",
-      "Curry",
-      "Prawns",
-      "Fish"
-    ],
+    "dishes": ["Juice & Smoothies", "Crab", "Omelette", "Curry", "Prawns", "Fish"],
     "features": ["Outdoor Seating", "Seating", "Table Service"],
     "dietaryRestrictions": ["Dinner"],
     "hours": {
@@ -39894,12 +39599,7 @@
     "cuisines": ["Seafood", "Malaysian", "Asian"],
     "mealTypes": ["Lunch"],
     "dishes": ["Fish"],
-    "features": [
-      "Seating",
-      "Table Service",
-      "Reservations",
-      "Wheelchair Accessible"
-    ],
+    "features": ["Seating", "Table Service", "Reservations", "Wheelchair Accessible"],
     "dietaryRestrictions": ["Lunch"],
     "hours": null,
     "menuWebUrl": null,
@@ -39979,22 +39679,10 @@
     "openNowText": null,
     "priceLevel": "$",
     "priceRange": null,
-    "cuisines": [
-      "Seafood",
-      "Asian",
-      "Malaysian",
-      "Vegetarian Friendly",
-      "Vegan Options"
-    ],
+    "cuisines": ["Seafood", "Asian", "Malaysian", "Vegetarian Friendly", "Vegan Options"],
     "mealTypes": ["Lunch", "Dinner", "Brunch", "Late Night"],
     "dishes": ["Noodle", "Calamari", "Prawns", "Fried rice", "Fish"],
-    "features": [
-      "Takeout",
-      "Outdoor Seating",
-      "Seating",
-      "Highchairs Available",
-      "Table Service"
-    ],
+    "features": ["Takeout", "Outdoor Seating", "Seating", "Highchairs Available", "Table Service"],
     "dietaryRestrictions": ["Lunch", "Dinner", "Brunch", "Late Night"],
     "hours": null,
     "menuWebUrl": null,
@@ -41118,15 +40806,7 @@
     "openNowText": "Open Now",
     "priceLevel": "$$ - $$$",
     "priceRange": null,
-    "cuisines": [
-      "Indian",
-      "Pizza",
-      "Asian",
-      "Vegetarian Friendly",
-      "Vegan Options",
-      "Halal",
-      "Gluten Free Options"
-    ],
+    "cuisines": ["Indian", "Pizza", "Asian", "Vegetarian Friendly", "Vegan Options", "Halal", "Gluten Free Options"],
     "mealTypes": ["Breakfast", "Lunch", "Dinner", "Brunch", "Late Night"],
     "dishes": [
       "Juice & Smoothies",
@@ -41158,13 +40838,7 @@
       "Accepts Credit Cards",
       "Table Service"
     ],
-    "dietaryRestrictions": [
-      "Breakfast",
-      "Lunch",
-      "Dinner",
-      "Brunch",
-      "Late Night"
-    ],
+    "dietaryRestrictions": ["Breakfast", "Lunch", "Dinner", "Brunch", "Late Night"],
     "hours": {
       "weekRanges": [
         [
@@ -41313,12 +40987,7 @@
     "cuisines": ["Chinese", "Malaysian", "Healthy", "Asian"],
     "mealTypes": ["Breakfast", "Lunch", "Dinner", "Drinks"],
     "dishes": [],
-    "features": [
-      "Reservations",
-      "Seating",
-      "Accepts Credit Cards",
-      "Table Service"
-    ],
+    "features": ["Reservations", "Seating", "Accepts Credit Cards", "Table Service"],
     "dietaryRestrictions": ["Breakfast", "Lunch", "Dinner", "Drinks"],
     "hours": {
       "weekRanges": [
@@ -41820,13 +41489,7 @@
     "cuisines": ["Chinese", "Asian", "Vegetarian Friendly"],
     "mealTypes": ["Dinner", "Lunch", "Brunch"],
     "dishes": [],
-    "features": [
-      "Takeout",
-      "Reservations",
-      "Table Service",
-      "Seating",
-      "Wheelchair Accessible"
-    ],
+    "features": ["Takeout", "Reservations", "Table Service", "Seating", "Wheelchair Accessible"],
     "dietaryRestrictions": ["Dinner", "Lunch", "Brunch"],
     "hours": null,
     "menuWebUrl": null,
@@ -42270,13 +41933,7 @@
     "openNowText": "Open Now",
     "priceLevel": "$",
     "priceRange": null,
-    "cuisines": [
-      "Cafe",
-      "Asian",
-      "Malaysian",
-      "Vegetarian Friendly",
-      "Vegan Options"
-    ],
+    "cuisines": ["Cafe", "Asian", "Malaysian", "Vegetarian Friendly", "Vegan Options"],
     "mealTypes": ["Breakfast", "Lunch", "Brunch"],
     "dishes": [
       "Juice & Smoothies",
@@ -42289,13 +41946,7 @@
       "Toasts",
       "Fried rice"
     ],
-    "features": [
-      "Takeout",
-      "Outdoor Seating",
-      "Seating",
-      "Parking Available",
-      "Table Service"
-    ],
+    "features": ["Takeout", "Outdoor Seating", "Seating", "Parking Available", "Table Service"],
     "dietaryRestrictions": ["Breakfast", "Lunch", "Brunch"],
     "hours": {
       "weekRanges": [
@@ -42682,13 +42333,7 @@
     "openNowText": null,
     "priceLevel": "$",
     "priceRange": null,
-    "cuisines": [
-      "Seafood",
-      "Asian",
-      "Malaysian",
-      "Vegetarian Friendly",
-      "Halal"
-    ],
+    "cuisines": ["Seafood", "Asian", "Malaysian", "Vegetarian Friendly", "Halal"],
     "mealTypes": ["Lunch", "Dinner"],
     "dishes": ["Prawns", "Fish"],
     "features": ["Takeout", "Outdoor Seating", "Seating", "Table Service"],
@@ -43047,21 +42692,8 @@
     ],
     "mealTypes": ["Lunch", "Dinner", "Brunch", "Late Night", "Drinks"],
     "dishes": ["Pasta", "Salad", "Creme Brulee", "Lamb", "Pesto", "Fish"],
-    "features": [
-      "Takeout",
-      "Reservations",
-      "Outdoor Seating",
-      "Seating",
-      "Wheelchair Accessible",
-      "Table Service"
-    ],
-    "dietaryRestrictions": [
-      "Lunch",
-      "Dinner",
-      "Brunch",
-      "Late Night",
-      "Drinks"
-    ],
+    "features": ["Takeout", "Reservations", "Outdoor Seating", "Seating", "Wheelchair Accessible", "Table Service"],
+    "dietaryRestrictions": ["Lunch", "Dinner", "Brunch", "Late Night", "Drinks"],
     "hours": {
       "weekRanges": [
         [
@@ -43511,15 +43143,7 @@
     "openNowText": null,
     "priceLevel": "$$ - $$$",
     "priceRange": null,
-    "cuisines": [
-      "Chinese",
-      "Bar",
-      "Seafood",
-      "Asian",
-      "Thai",
-      "Pub",
-      "Malaysian"
-    ],
+    "cuisines": ["Chinese", "Bar", "Seafood", "Asian", "Thai", "Pub", "Malaysian"],
     "mealTypes": [],
     "dishes": [],
     "features": [],
@@ -45019,17 +44643,7 @@
     "openNowText": null,
     "priceLevel": "$$ - $$$",
     "priceRange": null,
-    "cuisines": [
-      "Cafe",
-      "Barbecue",
-      "European",
-      "Thai",
-      "Malaysian",
-      "Bar",
-      "Seafood",
-      "Asian",
-      "Vegetarian Friendly"
-    ],
+    "cuisines": ["Cafe", "Barbecue", "European", "Thai", "Malaysian", "Bar", "Seafood", "Asian", "Vegetarian Friendly"],
     "mealTypes": ["Breakfast", "Lunch", "Dinner", "Brunch"],
     "dishes": ["Noodle", "Burger", "Tuna", "Fried rice", "Fish"],
     "features": [
@@ -45603,23 +45217,10 @@
     "openNowText": "Closed Now",
     "priceLevel": "$",
     "priceRange": "MYR 24",
-    "cuisines": [
-      "Indian",
-      "Healthy",
-      "Vegetarian Friendly",
-      "Vegan Options",
-      "Gluten Free Options"
-    ],
+    "cuisines": ["Indian", "Healthy", "Vegetarian Friendly", "Vegan Options", "Gluten Free Options"],
     "mealTypes": ["Lunch", "Dinner"],
     "dishes": ["Curry", "Lamb"],
-    "features": [
-      "Takeout",
-      "Outdoor Seating",
-      "Seating",
-      "Parking Available",
-      "Television",
-      "Table Service"
-    ],
+    "features": ["Takeout", "Outdoor Seating", "Seating", "Parking Available", "Television", "Table Service"],
     "dietaryRestrictions": ["Lunch", "Dinner"],
     "hours": {
       "weekRanges": [
@@ -45798,23 +45399,10 @@
     "openNowText": null,
     "priceLevel": "$$ - $$$",
     "priceRange": null,
-    "cuisines": [
-      "Chinese",
-      "Asian",
-      "Malaysian",
-      "Halal",
-      "Vegetarian Friendly",
-      "Gluten Free Options"
-    ],
+    "cuisines": ["Chinese", "Asian", "Malaysian", "Halal", "Vegetarian Friendly", "Gluten Free Options"],
     "mealTypes": ["Lunch", "Dinner"],
     "dishes": ["Prawns", "Beef", "Fish"],
-    "features": [
-      "Takeout",
-      "Reservations",
-      "Seating",
-      "Wheelchair Accessible",
-      "Table Service"
-    ],
+    "features": ["Takeout", "Reservations", "Seating", "Wheelchair Accessible", "Table Service"],
     "dietaryRestrictions": ["Lunch", "Dinner"],
     "hours": null,
     "menuWebUrl": "http://www.fourseasonsrestaurant.com.my/menu",
@@ -45907,14 +45495,7 @@
     "openNowText": "Open Now",
     "priceLevel": "$",
     "priceRange": "MYR 47 - MYR 236",
-    "cuisines": [
-      "Italian",
-      "Cafe",
-      "European",
-      "Vegetarian Friendly",
-      "Vegan Options",
-      "Gluten Free Options"
-    ],
+    "cuisines": ["Italian", "Cafe", "European", "Vegetarian Friendly", "Vegan Options", "Gluten Free Options"],
     "mealTypes": ["Breakfast", "Lunch", "Dinner", "Brunch", "Drinks"],
     "dishes": [
       "Juice & Smoothies",
@@ -46561,22 +46142,10 @@
     "openNowText": "Opens in 11 min",
     "priceLevel": "$$ - $$$",
     "priceRange": null,
-    "cuisines": [
-      "Chinese",
-      "Asian",
-      "Malaysian",
-      "Vegetarian Friendly",
-      "Vegan Options"
-    ],
+    "cuisines": ["Chinese", "Asian", "Malaysian", "Vegetarian Friendly", "Vegan Options"],
     "mealTypes": ["Lunch", "Dinner"],
     "dishes": ["Ribs", "Curry", "Prawns", "Fried rice", "Fish", "Pork"],
-    "features": [
-      "Takeout",
-      "Seating",
-      "Serves Alcohol",
-      "Table Service",
-      "Highchairs Available"
-    ],
+    "features": ["Takeout", "Seating", "Serves Alcohol", "Table Service", "Highchairs Available"],
     "dietaryRestrictions": ["Lunch", "Dinner"],
     "hours": {
       "weekRanges": [
@@ -46764,13 +46333,7 @@
     "cuisines": ["Asian", "Malaysian", "Vegetarian Friendly"],
     "mealTypes": ["Breakfast", "Lunch", "Dinner"],
     "dishes": ["Burger"],
-    "features": [
-      "Outdoor Seating",
-      "Seating",
-      "Wheelchair Accessible",
-      "Takeout",
-      "Table Service"
-    ],
+    "features": ["Outdoor Seating", "Seating", "Wheelchair Accessible", "Takeout", "Table Service"],
     "dietaryRestrictions": ["Breakfast", "Lunch", "Dinner"],
     "hours": null,
     "menuWebUrl": null,
@@ -46878,13 +46441,7 @@
     "cuisines": ["European"],
     "mealTypes": ["Lunch", "Breakfast", "Brunch"],
     "dishes": ["Sandwiches", "Cakes"],
-    "features": [
-      "Seating",
-      "Serves Alcohol",
-      "Free Wifi",
-      "Table Service",
-      "Highchairs Available"
-    ],
+    "features": ["Seating", "Serves Alcohol", "Free Wifi", "Table Service", "Highchairs Available"],
     "dietaryRestrictions": ["Lunch", "Breakfast", "Brunch"],
     "hours": null,
     "menuWebUrl": null,
@@ -46980,13 +46537,7 @@
     "openNowText": "Closed Now",
     "priceLevel": "$$$$",
     "priceRange": null,
-    "cuisines": [
-      "European",
-      "British",
-      "Vegetarian Friendly",
-      "Vegan Options",
-      "Gluten Free Options"
-    ],
+    "cuisines": ["European", "British", "Vegetarian Friendly", "Vegan Options", "Gluten Free Options"],
     "mealTypes": ["Breakfast", "Lunch", "Dinner", "Brunch"],
     "dishes": [
       "Sandwiches",
@@ -47241,13 +46792,7 @@
     "cuisines": ["Chinese", "Asian", "Malaysian", "Seafood"],
     "mealTypes": ["Lunch", "Dinner"],
     "dishes": ["Noodle", "Pasta", "Prawns", "Pesto", "Fish", "Pork"],
-    "features": [
-      "Takeout",
-      "Seating",
-      "Reservations",
-      "Serves Alcohol",
-      "Table Service"
-    ],
+    "features": ["Takeout", "Seating", "Reservations", "Serves Alcohol", "Table Service"],
     "dietaryRestrictions": ["Lunch", "Dinner"],
     "hours": {
       "weekRanges": [
@@ -47693,16 +47238,7 @@
     "priceRange": null,
     "cuisines": ["Chinese", "Seafood", "Asian", "Malaysian"],
     "mealTypes": ["Dinner"],
-    "dishes": [
-      "Crab",
-      "Ribs",
-      "Curry",
-      "Tilapia",
-      "Prawns",
-      "Duck",
-      "Fish",
-      "Pork"
-    ],
+    "dishes": ["Crab", "Ribs", "Curry", "Tilapia", "Prawns", "Duck", "Fish", "Pork"],
     "features": [
       "Takeout",
       "Reservations",
@@ -48046,12 +47582,7 @@
     "cuisines": ["Pizza", "Seafood", "International"],
     "mealTypes": ["Breakfast", "Lunch", "Dinner", "Late Night"],
     "dishes": ["Noodle", "Salad", "Fish"],
-    "features": [
-      "Outdoor Seating",
-      "Seating",
-      "Serves Alcohol",
-      "Table Service"
-    ],
+    "features": ["Outdoor Seating", "Seating", "Serves Alcohol", "Table Service"],
     "dietaryRestrictions": ["Breakfast", "Lunch", "Dinner", "Late Night"],
     "hours": null,
     "menuWebUrl": null,
@@ -48226,12 +47757,7 @@
     "cuisines": ["Asian", "Malaysian", "Seafood", "Halal"],
     "mealTypes": ["Lunch", "Brunch", "Dinner"],
     "dishes": ["Fish"],
-    "features": [
-      "Takeout",
-      "Seating",
-      "Outdoor Seating",
-      "Highchairs Available"
-    ],
+    "features": ["Takeout", "Seating", "Outdoor Seating", "Highchairs Available"],
     "dietaryRestrictions": ["Lunch", "Brunch", "Dinner"],
     "hours": {
       "weekRanges": [
@@ -48373,22 +47899,9 @@
     "openNowText": null,
     "priceLevel": "$$ - $$$",
     "priceRange": "MYR 71",
-    "cuisines": [
-      "Asian",
-      "Malaysian",
-      "Vegetarian Friendly",
-      "Vegan Options",
-      "Gluten Free Options"
-    ],
+    "cuisines": ["Asian", "Malaysian", "Vegetarian Friendly", "Vegan Options", "Gluten Free Options"],
     "mealTypes": ["Breakfast", "Lunch", "Dinner"],
-    "dishes": [
-      "Juice & Smoothies",
-      "Noodle",
-      "Prawns",
-      "Beef",
-      "Cakes",
-      "Fish"
-    ],
+    "dishes": ["Juice & Smoothies", "Noodle", "Prawns", "Beef", "Cakes", "Fish"],
     "features": [
       "Reservations",
       "Outdoor Seating",
@@ -53688,11 +53201,7 @@
     "id": "11643791",
     "type": "ATTRACTION",
     "category": "attraction",
-    "subcategories": [
-      "Tours",
-      "Boat Tours & Water Sports",
-      "Outdoor Activities"
-    ],
+    "subcategories": ["Tours", "Boat Tours & Water Sports", "Outdoor Activities"],
     "name": "Kuantan River Cruise",
     "locationString": "Kuantan, Kuantan District, Pahang",
     "description": "We offer exciting guided river cruise to the river mouth and/or mangrove park. We also offer firefly sightseeing & crocodile spotting at night. An experience not to be missed if you are in Kuantan!",
@@ -53787,12 +53296,7 @@
     ],
     "booking": null,
     "offerGroup": null,
-    "subtype": [
-      "Boat Tours",
-      "Night Tours",
-      "Private Tours",
-      "Nature & Wildlife Tours"
-    ]
+    "subtype": ["Boat Tours", "Night Tours", "Private Tours", "Nature & Wildlife Tours"]
   },
   {
     "id": "8424803",
@@ -54875,11 +54379,7 @@
     "id": "1209681",
     "type": "ATTRACTION",
     "category": "attraction",
-    "subcategories": [
-      "Tours",
-      "Boat Tours & Water Sports",
-      "Outdoor Activities"
-    ],
+    "subcategories": ["Tours", "Boat Tours & Water Sports", "Outdoor Activities"],
     "name": "Turtle Bay Divers",
     "locationString": "Pulau Perhentian Kecil, Perhentian Islands, Terengganu",
     "description": "We Dive from March to October. We start PADI course Everyday PADI Open Water Rm 990 PADI Advanced course RM 890 Certified we dive 3 times a day 8:30 am, 12:30pm and 3:30 pm. We also have dive day trips to Redang island 1 to 4 dives RM 75 each dive 5th dive on RM 70 Pinnacle & Sugar Wreck RM 90 each dive All prices above Include Diving Equipment. We accept Cash and credit card. No ATM on the island Contact by email or facebook",
@@ -54985,11 +54485,7 @@
     "id": "8048219",
     "type": "ATTRACTION",
     "category": "attraction",
-    "subcategories": [
-      "Tours",
-      "Boat Tours & Water Sports",
-      "Outdoor Activities"
-    ],
+    "subcategories": ["Tours", "Boat Tours & Water Sports", "Outdoor Activities"],
     "name": "Anti Gravity Divers",
     "locationString": "Pulau Perhentian Kecil, Perhentian Islands, Terengganu",
     "description": "Welcome to the stunning Perhentian Island, where an extraordinary diving experience awaits you at our PADI 5 Star Instructor Development dive center! Nestled amidst the breathtaking beauty of this tropical paradise, our family-friendly dive center offers a truly unforgettable adventure for divers of all ages and skill levels. Indulge in the natural beauty of Perhentian Island and embark on an unforgettable underwater adventure at our PADI 5 Star IDC center. We guarantee a safe, educational, and exhilarating experience that will leave you with lifelong memories of this tropical paradise. Join us and discover the magic beneath the waves!",
@@ -55158,11 +54654,7 @@
     "id": "1771595",
     "type": "ATTRACTION",
     "category": "attraction",
-    "subcategories": [
-      "Tours",
-      "Boat Tours & Water Sports",
-      "Outdoor Activities"
-    ],
+    "subcategories": ["Tours", "Boat Tours & Water Sports", "Outdoor Activities"],
     "name": "Quiver Dive Team",
     "locationString": "Pulau Perhentian Kecil, Perhentian Islands, Terengganu",
     "description": "Explore the underwater wonder of Perhentian Islands with Quiver Dive Team, awards-winning IDC Dive Resort. Conduct all PADI courses from Discover Scuba Diving/Open Water upto Staff Instructor, all PADI specialties and also TecRec. Offering dives tailored to your comfort and experience level. We take your safety and enjoyment seriously. Dive with peace of mind- we are fully insured. Emergency oxygen and walkie-talkie are carried on all our boats, which are manned by experienced Captains and have canopies. Electric compressors guarantee clean air.",
@@ -55259,11 +54751,7 @@
     "id": "10509716",
     "type": "ATTRACTION",
     "category": "attraction",
-    "subcategories": [
-      "Tours",
-      "Boat Tours & Water Sports",
-      "Outdoor Activities"
-    ],
+    "subcategories": ["Tours", "Boat Tours & Water Sports", "Outdoor Activities"],
     "name": "Sea Voice Divers",
     "locationString": "Pulau Perhentian Kecil, Perhentian Islands, Terengganu",
     "description": "We are located in the heart of a little paradise known as the Perhentian Island. Our small dive centre runs PADI certification scuba diving courses from beginners to professional dive master level, marine education and conservation activities, accompanied scuba dives and scuba diving packages for groups as well as individual diver throughout the season.",
@@ -55668,11 +55156,7 @@
     "id": "15523270",
     "type": "ATTRACTION",
     "category": "attraction",
-    "subcategories": [
-      "Tours",
-      "Boat Tours & Water Sports",
-      "Outdoor Activities"
-    ],
+    "subcategories": ["Tours", "Boat Tours & Water Sports", "Outdoor Activities"],
     "name": "GEM Divers",
     "locationString": "Marang, Terengganu",
     "description": "A very tranquil private island off the coast of Marang, Terengganu, Malaysia. Only one resort on the island and only one registered dive center located on it.",
@@ -56033,13 +55517,7 @@
     "id": "20131513",
     "type": "ATTRACTION",
     "category": "attraction",
-    "subcategories": [
-      "Tours",
-      "Other",
-      "Boat Tours & Water Sports",
-      "Transportation",
-      "Outdoor Activities"
-    ],
+    "subcategories": ["Tours", "Other", "Boat Tours & Water Sports", "Transportation", "Outdoor Activities"],
     "name": "Suria Link",
     "locationString": "Marang, Terengganu",
     "description": "Your trusted boat service for Kapas and Gem island since 1996. We provide boat transfer, day trips, snorkelling trips. We are always ready to help you arrange your accommodation at both islands, your diving experience and many more.",
@@ -56696,11 +56174,7 @@
     "id": "12342575",
     "type": "ATTRACTION",
     "category": "attraction",
-    "subcategories": [
-      "Tours",
-      "Boat Tours & Water Sports",
-      "Outdoor Activities"
-    ],
+    "subcategories": ["Tours", "Boat Tours & Water Sports", "Outdoor Activities"],
     "name": "Aquarius Redang Dive Centre",
     "locationString": "Pulau Redang, Terengganu",
     "description": "Aquarius Redang,Where you can explore the ocean at your own pace We're not just ordinary scuba diving dive centres. Aquarius Redang is the perfect choice for a private scuba diving and snorkelling trip in Redang Island, Terengganu.We offer a comprehensive Private Trip package that includes all the necessary equipment and training,so you can enjoy the underwater world to the fullest !. Our experienced guides will take you to the best spots in the island,where you can see a variety of colorful fish and corals.",
@@ -56769,11 +56243,7 @@
     "id": "10100657",
     "type": "ATTRACTION",
     "category": "attraction",
-    "subcategories": [
-      "Tours",
-      "Boat Tours & Water Sports",
-      "Outdoor Activities"
-    ],
+    "subcategories": ["Tours", "Boat Tours & Water Sports", "Outdoor Activities"],
     "name": "Laguna Redang - Dive Center",
     "locationString": "Pulau Redang, Terengganu",
     "description": null,
@@ -56988,13 +56458,7 @@
     "id": "19779165",
     "type": "ATTRACTION",
     "category": "attraction",
-    "subcategories": [
-      "Tours",
-      "Other",
-      "Boat Tours & Water Sports",
-      "Transportation",
-      "Outdoor Activities"
-    ],
+    "subcategories": ["Tours", "Other", "Boat Tours & Water Sports", "Transportation", "Outdoor Activities"],
     "name": "vigourmarine transtour sdn bhd",
     "locationString": "Pulau Redang, Terengganu",
     "description": "We are the main sea transportation provider and logistic to Redang, Lang Tengah and Bidong Island. At same time, we also provide a Island Hopping, Island Tour, Snorkeling Trip, Diving Trip, Day Trip, and Fishing Trip. We will navigate our customer to fantastic place for snorkeling and diving We also provide a booking service for resort and boat rental service.",
@@ -57342,11 +56806,7 @@
     "id": "24117398",
     "type": "ATTRACTION",
     "category": "attraction",
-    "subcategories": [
-      "Tours",
-      "Boat Tours & Water Sports",
-      "Outdoor Activities"
-    ],
+    "subcategories": ["Tours", "Boat Tours & Water Sports", "Outdoor Activities"],
     "name": "Che Wan Scuba",
     "locationString": "Dungun, Dungun District, Terengganu",
     "description": null,
@@ -59185,11 +58645,7 @@
     "id": "12361636",
     "type": "ATTRACTION",
     "category": "attraction",
-    "subcategories": [
-      "Tours",
-      "Boat Tours & Water Sports",
-      "Outdoor Activities"
-    ],
+    "subcategories": ["Tours", "Boat Tours & Water Sports", "Outdoor Activities"],
     "name": "Sport Fishing Asia",
     "locationString": "Kuala Rompin, Rompin District, Pahang",
     "description": "100% full time professional local Malaysian owner and crew. Kuala Rompin sailfish sport fishing and fly fishing charter and guided tours. Custom 32ft sport fisher boat to 36ft catamaran sport fisher boat to 72ft luxury sport fisher live-aboard motor yacht.",
@@ -59685,11 +59141,7 @@
     "id": "1830206",
     "type": "ATTRACTION",
     "category": "attraction",
-    "subcategories": [
-      "Tours",
-      "Boat Tours & Water Sports",
-      "Outdoor Activities"
-    ],
+    "subcategories": ["Tours", "Boat Tours & Water Sports", "Outdoor Activities"],
     "name": "B&J Diving Centre",
     "locationString": "Pulau Tioman, Rompin District, Pahang",
     "description": "B&J Diving Centre on Tioman Island has been established in 1986 and is run by a Malay/German/Swiss management team. It stands for quality and service without cutting corners on safety. B&J is a PADI 5 Star IDC Facility that conducts all PADI Dive Courses as well as daily dive trips to the best dives sites around Tioman Island. Tioman Dive Resort and B&J Dormitories are owned and operated by B&J. Certified divers join up to 3 boat dives per day plus night dives. The 2 morning dives bring you to dive sites in the vicinity of famous Coral Island, whereas the single afternoon dive will be at a dive site closer to Tioman Island. Distance by boat to the 20+ sites is between 5min to 20min. Group sizes for leisure diving and courses are always kept small with a maximum of 4 divers per PADI professional.",
@@ -59972,11 +59424,7 @@
     "id": "2169690",
     "type": "ATTRACTION",
     "category": "attraction",
-    "subcategories": [
-      "Tours",
-      "Boat Tours & Water Sports",
-      "Outdoor Activities"
-    ],
+    "subcategories": ["Tours", "Boat Tours & Water Sports", "Outdoor Activities"],
     "name": "Tioman Dive Centre",
     "locationString": "Salang, Pulau Tioman, Rompin District, Pahang",
     "description": "A dive centre with a personal touch. We will do our upmost to ensure that you have a safe and enjoyable day's diving at TDC. We are based in Salang Bay, near the jetty, in the north of Tioman, directly on the beachfront. We cater for experienced divers as well as those who have never dived before. We look forward to seeing you here soon!",
@@ -60201,12 +59649,7 @@
     "id": "18922236",
     "type": "ATTRACTION",
     "category": "attraction",
-    "subcategories": [
-      "Tours",
-      "Other",
-      "Boat Tours & Water Sports",
-      "Outdoor Activities"
-    ],
+    "subcategories": ["Tours", "Other", "Boat Tours & Water Sports", "Outdoor Activities"],
     "name": "Juara Scuba Academy",
     "locationString": "Pulau Tioman, Rompin District, Pahang",
     "description": "We traded suits and ties for boardshorts & flip flops and pledged to represent the voices of the ocean. Our professionally trained staff offer guided fun dives, as well as PADI & SSI courses for beginner to professional levels. A coral reef restoration & conservation program was born from our love and respect towards the ocean. The program is to educate the future generation to protect nature.",
