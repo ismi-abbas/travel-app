@@ -1,6 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
 import supabase from "../../lib/supabase";
 import { useQuery } from "@tanstack/react-query";
+import profilePicture from "../../assets/profile_picture.png";
 
 export const Route = createFileRoute("/_authenticated/profile")({
   component: Profile,
@@ -12,7 +13,7 @@ function Profile() {
     queryFn: getUser,
   });
 
-  const { full_name, email, avatar_url } = data?.user || {};
+  const { full_name, email, avatar_url, picture } = data?.user || {};
 
   return (
     <div className="flex flex-1 justify-center w-full">
@@ -22,7 +23,11 @@ function Profile() {
         <div className="max-w-screen-sm w-full mt-10">
           {data && (
             <div className="border rounded-md bg-white p-14 w-full justify-center flex flex-col items-center gap-4">
-              <img src={avatar_url} alt="profile picture" className="object-cover rounded-full w-36" />
+              <img
+                src={avatar_url ? avatar_url : picture ? picture : profilePicture}
+                alt="profile picture"
+                className="object-cover rounded-full w-36"
+              />
               <p className="text-xl">{full_name}</p>
               <p>{email}</p>
               <p className="capitalize">{data.role.role}</p>
