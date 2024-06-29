@@ -1,7 +1,7 @@
 import { useQuery } from "@tanstack/react-query";
 import { createFileRoute, Link } from "@tanstack/react-router";
 import supabase from "../../lib/supabase";
-import { PlaceCardHorizontal } from "../../components/placeCard";
+import { FullRecommendation, PlaceCardHorizontal } from "../../components/placeCard";
 import { calculateDistance, extractPriceRange } from "../../lib/utils";
 import { useState } from "react";
 
@@ -65,6 +65,7 @@ function RecommenderResult() {
 
   if (allPlaceData) {
     var filtered = allPlaceData;
+
     if (criteria.rating) {
       filtered = allPlaceData.filter((place) => place.rating <= criteria.rating);
     }
@@ -102,28 +103,40 @@ function RecommenderResult() {
     }
 
     if (criteria.isTopResult) {
-      filtered = allPlaceData.slice(0, 1);
+      filtered = filtered
+        .sort((a, b) => b.rating - a.rating)
+        .sort((a, b) => a.distance - b.distance)
+        .slice(0, 1);
     }
   }
 
   return (
     <div className="mt-4 mb-10">
       <div className="flex flex-col justify-center items-center h-full">
-        <h1 className="text-2xl">Recommended Trips</h1>
+        <h1 className="text-2xl">{criteria.isTopResult ? "Recommended Trip" : "Recommended Trips"}</h1>
         {getPlaceIsError && <div>500 Server Error {getPlaceError}</div>}
-        <p>
-          Here are some places that we recommend based on your preferences.
-          <span>
-            <Link to="/planner" className="underline underline-offset-1 ml-2 decoration-orange-500 text-orange-500">
-              Clear
-            </Link>
-          </span>
-        </p>
+
+        {!criteria.isTopResult && (
+          <p>
+            Here are some places that we recommend based on your preferences.
+            <span>
+              <Link to="/planner" className="underline underline-offset-1 ml-2 decoration-orange-500 text-orange-500">
+                Clear
+              </Link>
+            </span>
+          </p>
+        )}
       </div>
       <div className="grid grid-cols-1 gap-4 mt-4">
         {filtered &&
           filtered.map((place) => (
-            <PlaceCardHorizontal key={place.id} place={place} selectedDistrict={criteria.district} />
+            <>
+              {!criteria.isTopResult ? (
+                <PlaceCardHorizontal key={place.id} place={place} selectedDistrict={criteria.district} />
+              ) : (
+                <FullRecommendation key={place.id} place={place} selectedDistrict={criteria.district} />
+              )}
+            </>
           ))}
       </div>
     </div>

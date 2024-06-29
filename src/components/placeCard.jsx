@@ -1,4 +1,5 @@
 import { Link } from "@tanstack/react-router";
+import { Fragment } from "react";
 import { AiFillStar } from "react-icons/ai";
 import { IoLocationOutline } from "react-icons/io5";
 
@@ -95,4 +96,58 @@ export const PlaceCardHorizontal = ({ place, selectedDistrict }) => (
       </div>
     </div>
   </Link>
+);
+
+export const FullRecommendation = ({ place, selectedDistrict }) => (
+  <Fragment>
+    <div className="place w-full bg-white border rounded-lg overflow-hidden">
+      <div className="h-[150px] md:h-[230px] overflow-hidden">
+        <img
+          src={place.image !== "" ? place.image : "https://via.placeholder.com/400x200?text=No+Image"}
+          alt={place.name}
+          className="w-full h-full object-cover"
+        />
+      </div>
+      <div className="p-4 flex flex-col justify-end">
+        <h3 className="text-xl font-semibold mb-2 w-full truncate capitalize">{place.name}</h3>
+        {/* Details */}
+        <div className="flex justify-between mb-2 flex-1 flex-col">
+          <div className="my-2">
+            <p>{place.description}</p>
+          </div>
+          <div className="flex items-center space-x-1 text-yellow-500">
+            <span className="text-primary">Rating</span>
+            <div className="flex">
+              {Array.from({ length: place.rating }).map((_, index) => (
+                <AiFillStar key={index} />
+              ))}
+            </div>
+            <span>{place.rating}</span>
+          </div>
+          <div className="flex items-center my-2">
+            <div className="mr-2">
+              <IoLocationOutline />
+            </div>
+            <p className="text-start truncate">{place.address}</p>
+          </div>
+          <div className="mt-2 flex flex-wrap gap-2">
+            {place.subcategory.map((category, index) => (
+              <span key={index} className="bg-gray-200 text-gray-600 px-2 py-1 rounded-lg text-xs">
+                {category}
+              </span>
+            ))}
+            <p className="text-start truncate"></p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div className="flex flex-col border rounded-md bg-zinc-200 p-4">
+      <div>Total Budget: {place.price_range.split("-")[1]}</div>
+      <div>
+        Distance from <span className="capitalize">{selectedDistrict}</span>:{" "}
+        <span className="font-medium">{place.distance.toFixed()} KM</span>
+      </div>
+    </div>
+  </Fragment>
 );
