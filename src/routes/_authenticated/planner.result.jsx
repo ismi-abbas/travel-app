@@ -59,6 +59,7 @@ function RecommenderResult() {
           lat: criteria.placeCoordinates.lat,
           long: criteria.placeCoordinates.long,
         },
+        isTopResult: criteria.isTopResult,
       }),
   });
 
@@ -98,6 +99,10 @@ function RecommenderResult() {
       filtered = filtered.filter((place) => {
         return place.distance <= criteria.distance[0];
       });
+    }
+
+    if (criteria.isTopResult) {
+      filtered = allPlaceData.slice(0, 1);
     }
   }
 

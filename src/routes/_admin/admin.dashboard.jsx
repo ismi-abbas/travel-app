@@ -27,7 +27,7 @@ function AdminDashboard() {
   });
 
   return (
-    <div className="w-full mt-4">
+    <div className="w-full mt-8 mb-10 flex items-center flex-col">
       {isLoading && <p>Loading...</p>}
       {isError && <p>Something went wrong</p>}
       {data && <DataTable columns={columns} defaultData={data} />}

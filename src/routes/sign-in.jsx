@@ -21,6 +21,22 @@ export function SignIn() {
       password,
     });
 
+    const { data: role, error: profileError } = await supabase
+      .from("role")
+      .select("role")
+      .eq("user_id", data.user.id)
+      .single();
+
+    if (role.role.trim().toLowerCase() === "admin") {
+      await navigate({
+        to: "/admin/dashboard",
+        state: {
+          user: data.user,
+        },
+      });
+      return;
+    }
+
     if (error) {
       toast.error(error.message);
       return;

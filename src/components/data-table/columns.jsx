@@ -2,6 +2,7 @@ import { createColumnHelper } from "@tanstack/react-table";
 import { cn } from "../../lib/utils.js";
 import { Fragment } from "react";
 import { useState, useEffect } from "react";
+import { TableCell } from "./table.jsx";
 
 const columnHelper = createColumnHelper();
 
@@ -94,6 +95,12 @@ export const columns = [
   columnHelper.display({
     id: "edit",
     cell: EditButtonCell,
+  }),
+  columnHelper.accessor("id", {
+    header: "ID",
+    meta: {
+      type: "text",
+    },
   }),
   columnHelper.accessor("type", {
     header: "Type",

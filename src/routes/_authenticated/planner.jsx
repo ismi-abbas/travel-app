@@ -286,7 +286,7 @@ export default function PlanTour() {
               handleCategoryChange={handleCategoryChange}
             />
           </div>
-          <div className="flex w-full flex-col mt-4">
+          <div className="flex mt-4 gap-2 flex-col">
             <Link
               to="/planner/result"
               search={{
@@ -297,10 +297,27 @@ export default function PlanTour() {
                 priceRange: selectedCriteria.priceRange,
                 placeCoordinates: selectedCriteria.placeCoordinates,
                 categories: selectedCriteria.categories,
+                isTopResult: false,
               }}
-              className="inline-flex self-start px-5 py-2 rounded bg-gray-100 hover:bg-orange-500 hover:text-white"
+              className="inline-flex items-center justify-center py-2 px-2 rounded bg-gray-100 hover:bg-orange-500 hover:text-white"
             >
-              Recommmended Tour
+              Recommend Tour
+            </Link>
+            <Link
+              to="/planner/result"
+              search={{
+                state: selectedCriteria.state,
+                district: selectedCriteria.district,
+                rating: selectedCriteria.rating,
+                distance: selectedCriteria.distance,
+                priceRange: selectedCriteria.priceRange,
+                placeCoordinates: selectedCriteria.placeCoordinates,
+                categories: selectedCriteria.categories,
+                isTopResult: true,
+              }}
+              className="inline-flex items-center justify-center py-2 px-2 rounded bg-gray-100 hover:bg-orange-500 hover:text-white"
+            >
+              Recommend One
             </Link>
           </div>
         </div>

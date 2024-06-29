@@ -1,6 +1,7 @@
 import { createFileRoute, Link, useNavigate } from "@tanstack/react-router";
 import { useState } from "react";
 import supabase from "../lib/supabase";
+import toast from "react-hot-toast";
 
 export const Route = createFileRoute("/sign-up")({
   component: SignUp,
@@ -37,11 +38,12 @@ function SignUpForm() {
     }
 
     if (data) {
+      toast.success('Successfully register user')
       return data.user;
     }
 
     await navigate({
-      to: "/dashboard",
+      to: "/",
     });
   };
 

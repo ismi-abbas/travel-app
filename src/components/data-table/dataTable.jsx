@@ -115,7 +115,7 @@ export function DataTable({ columns, defaultData }) {
       </Table>
       <div className="mt-2 gap-2 flex">
         <button
-          className="border border-orange-500 rounded-md px-2 hover:bg-orange-500 hover:text-white"
+          className="border border-orange-500 rounded-md px-2 hover:bg-orange-500 hover:text-white disabled:cursor-not-allowed"
           onClick={() => table.previousPage()}
           disabled={!table.getCanPreviousPage()}
         >
